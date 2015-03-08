@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VotacionesPG" Class="DBVotacionesPGDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=190.25.208.72\Desarrollo;Initial Catalog=VotacionesPG;Persist Security Info=True;User ID=UsrVotacionPG" SettingsObjectName="Votacion_DAL.Properties.Settings" SettingsPropertyName="VotacionesPGConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AREA" Member="AREA">
+    <Type Name="AREA">
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_AREA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="AREA_USUARIO" Member="USUARIO" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="USUARIO" />
+      <Association Name="AREA_AREA_SESION" Member="AREA_SESION" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="AREA_SESION" />
+      <Association Name="EMPRESA_AREA" Member="EMPRESA" ThisKey="ID_EMPRESA" OtherKey="ID_EMPRESA" Type="EMPRESA" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USUARIO" Member="USUARIO">
+    <Type Name="USUARIO">
+      <Column Name="ID_USUARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TIPO_IDENTIFICACION" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="IDENTFICACION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRES" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDOS" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IMAGEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GENERO" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_NACIMIENTO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_USUARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NOMBRE_USUARIO" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CONTRASENIA" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="USUARIO_ROL_USUARIO" Member="ROL_USUARIO" ThisKey="ID_USUARIO" OtherKey="ID_USUARIO" Type="ROL_USUARIO" />
+      <Association Name="USUARIO_SESION_CANDIDATO" Member="SESION_CANDIDATO" ThisKey="ID_USUARIO" OtherKey="ID_CANDIDATO" Type="SESION_CANDIDATO" />
+      <Association Name="USUARIO_SESION_USUARIO" Member="SESION_USUARIO" ThisKey="ID_USUARIO" OtherKey="ID_USUARIO" Type="SESION_USUARIO" />
+      <Association Name="USUARIO_SESION_USUARIO1" Member="SESION_USUARIO1" ThisKey="ID_USUARIO" OtherKey="ID_USUARIO_CANDIDATO" Type="SESION_USUARIO" />
+      <Association Name="AREA_USUARIO" Member="AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="AREA" IsForeignKey="true" />
+      <Association Name="TIPO_USUARIO_USUARIO" Member="TIPO_USUARIO" ThisKey="ID_TIPO_USUARIO" OtherKey="ID_TIPO_USUARIO" Type="TIPO_USUARIO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AREA_SESION" Member="AREA_SESION">
+    <Type Name="AREA_SESION">
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_SESION" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDAREASESION" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="AREA_AREA_SESION" Member="AREA" ThisKey="ID_AREA" OtherKey="ID_AREA" Type="AREA" IsForeignKey="true" />
+      <Association Name="SESION_VOTACION_AREA_SESION" Member="SESION_VOTACION" ThisKey="ID_SESION" OtherKey="ID_SESION" Type="SESION_VOTACION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMPRESA" Member="EMPRESA">
+    <Type Name="EMPRESA">
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_EMPRESA" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="NIT_EMPRESA" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="DIRECCION_EMPRESA" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TELEFONO_EMPRESA" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CORREO_EMPRESA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="EMPRESA_AREA" Member="AREA" ThisKey="ID_EMPRESA" OtherKey="ID_EMPRESA" Type="AREA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROL" Member="ROL">
+    <Type Name="ROL">
+      <Column Name="ID_ROL" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_ROL" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="ROL_ROL_USUARIO" Member="ROL_USUARIO" ThisKey="ID_ROL" OtherKey="ID_ROL" Type="ROL_USUARIO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROL_USUARIO" Member="ROL_USUARIO">
+    <Type Name="ROL_USUARIO">
+      <Column Name="ID_USUARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ROL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ROLUSUARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="ROL_ROL_USUARIO" Member="ROL" ThisKey="ID_ROL" OtherKey="ID_ROL" Type="ROL" IsForeignKey="true" />
+      <Association Name="USUARIO_ROL_USUARIO" Member="USUARIO" ThisKey="ID_USUARIO" OtherKey="ID_USUARIO" Type="USUARIO" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SESION_CANDIDATO" Member="SESION_CANDIDATO">
+    <Type Name="SESION_CANDIDATO">
+      <Column Name="ID_SESION" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CANDIDATO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDSESIONCANDIDATO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="USUARIO_SESION_CANDIDATO" Member="USUARIO" ThisKey="ID_CANDIDATO" OtherKey="ID_USUARIO" Type="USUARIO" IsForeignKey="true" />
+      <Association Name="SESION_VOTACION_SESION_CANDIDATO" Member="SESION_VOTACION" ThisKey="ID_SESION" OtherKey="ID_SESION" Type="SESION_VOTACION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SESION_USUARIO" Member="SESION_USUARIO">
+    <Type Name="SESION_USUARIO">
+      <Column Name="ID_SESION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_USUARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TIPO_VOTO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FECHA_VOTO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ID_USUARIO_CANDIDATO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDSESIONUSAUARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="USUARIO_SESION_USUARIO" Member="USUARIO" ThisKey="ID_USUARIO" OtherKey="ID_USUARIO" Type="USUARIO" IsForeignKey="true" />
+      <Association Name="USUARIO_SESION_USUARIO1" Member="USUARIO1" ThisKey="ID_USUARIO_CANDIDATO" OtherKey="ID_USUARIO" Type="USUARIO" IsForeignKey="true" />
+      <Association Name="SESION_VOTACION_SESION_USUARIO" Member="SESION_VOTACION" ThisKey="ID_SESION" OtherKey="ID_SESION" Type="SESION_VOTACION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SESION_VOTACION" Member="SESION_VOTACION">
+    <Type Name="SESION_VOTACION">
+      <Column Name="ID_SESION" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NOMBRE_SESION" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="ESTADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_INICIO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FECHA_FIN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FECHA_INI_INSCRIPCION" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FECHA_FIN_INSCRIPCION" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="SESION_VOTACION_AREA_SESION" Member="AREA_SESION" ThisKey="ID_SESION" OtherKey="ID_SESION" Type="AREA_SESION" />
+      <Association Name="SESION_VOTACION_SESION_CANDIDATO" Member="SESION_CANDIDATO" ThisKey="ID_SESION" OtherKey="ID_SESION" Type="SESION_CANDIDATO" />
+      <Association Name="SESION_VOTACION_SESION_USUARIO" Member="SESION_USUARIO" ThisKey="ID_SESION" OtherKey="ID_SESION" Type="SESION_USUARIO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIPO_USUARIO" Member="TIPO_USUARIO">
+    <Type Name="TIPO_USUARIO">
+      <Column Name="ID_TIPO_USUARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_TIPO_USUARIO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TIPO_USUARIO_USUARIO" Member="USUARIO" ThisKey="ID_TIPO_USUARIO" OtherKey="ID_TIPO_USUARIO" Type="USUARIO" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SPR_CONSULTA_AREAS_EMPRESA" Method="SPR_CONSULTA_AREAS_EMPRESA">
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SPR_CONSULTA_AREAS_EMPRESAResult">
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_AREA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_CONSULTA_EMPRESAS" Method="SPR_CONSULTA_EMPRESAS">
+    <ElementType Name="SPR_CONSULTA_EMPRESASResult">
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_EMPRESA" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_DELETE_COMPANY_ADM" Method="SPR_DELETE_COMPANY_ADM">
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SPR_DELETE_USUARIO" Method="SPR_DELETE_USUARIO">
+    <Parameter Name="ID_USUARIO" Parameter="iD_USUARIO" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SPR_INSERT_COMPANY_ID" Method="SPR_INSERT_COMPANY_ID">
+    <Parameter Name="NOMBRE_EMPRESA" Parameter="nOMBRE_EMPRESA" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="NIT_EMPRESA" Parameter="nIT_EMPRESA" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="DIRECCION_EMPRESA" Parameter="dIRECCION_EMPRESA" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="TELEFONO_EMPRESA" Parameter="tELEFONO_EMPRESA" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CORREO_EMPRESA" Parameter="cORREO_EMPRESA" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SPR_INSERT_USUARIO" Method="SPR_INSERT_USUARIO">
+    <Parameter Name="IDENTFICACION" Parameter="iDENTFICACION" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="TIPO_IDENTIFICACION" Parameter="tIPO_IDENTIFICACION" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="NOMBRES" Parameter="nOMBRES" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="APELLIDOS" Parameter="aPELLIDOS" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="IMAGEN" Parameter="iMAGEN" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="GENERO" Parameter="gENERO" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="FECHA_NACIMIENTO" Parameter="fECHA_NACIMIENTO" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="NUMERO" Parameter="nUMERO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_AREA" Parameter="iD_AREA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_TIPO_USUARIO" Parameter="iD_TIPO_USUARIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_ROL" Parameter="iD_ROL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOMBRE_USUARIO" Parameter="nOMBRE_USUARIO" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CONTRASENIA" Parameter="cONTRASENIA" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SPR_LOGIN_USUARIO" Method="SPR_LOGIN_USUARIO">
+    <Parameter Name="NOMBRE_USUARIO" Parameter="nOMBRE_USUARIO" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CONTRASENIA" Parameter="cONTRASENIA" Type="System.String" DbType="NVarChar(20)" />
+    <ElementType Name="SPR_LOGIN_USUARIOResult">
+      <Column Name="ID_USUARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDENTFICACION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TIPO_IDENTIFICACION" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRES" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDOS" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IMAGEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GENERO" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_NACIMIENTO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TIPO_USUARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ROL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_SELECT_AREA" Method="SPR_SELECT_AREA">
+    <ElementType Name="SPR_SELECT_AREAResult">
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_AREA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_SELECT_COMPANYS_ADM" Method="SPR_SELECT_COMPANYS_ADM">
+    <ElementType Name="SPR_SELECT_COMPANYS_ADMResult">
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_EMPRESA" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="NIT_EMPRESA" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="DIRECCION_EMPRESA" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TELEFONO_EMPRESA" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CORREO_EMPRESA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_SELECT_ROLES" Method="SPR_SELECT_ROLES">
+    <ElementType Name="SPR_SELECT_ROLESResult">
+      <Column Name="ID_ROL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_ROL" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_SELECT_TIPO_USUARIO" Method="SPR_SELECT_TIPO_USUARIO">
+    <ElementType Name="SPR_SELECT_TIPO_USUARIOResult">
+      <Column Name="ID_TIPO_USUARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_TIPO_USUARIO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_SELECT_USER_ID" Method="SPR_SELECT_USER_ID">
+    <Parameter Name="ID_USER" Parameter="iD_USER" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SPR_SELECT_USER_IDResult">
+      <Column Name="ID_USUARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDENTFICACION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRES" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDOS" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IMAGEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GENERO" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_NACIMIENTO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_USUARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NOMBRE_USUARIO" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CONTRASENIA" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_SELECT_USERS_ADM" Method="SPR_SELECT_USERS_ADM">
+    <ElementType Name="SPR_SELECT_USERS_ADMResult">
+      <Column Name="ID_USUARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDENTFICACION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TIPO_IDENTIFICACION" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRES" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDOS" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IMAGEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GENERO" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_NACIMIENTO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_AREA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TIPO_USUARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ROL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CONTRASENIA" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_USUARIO" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SPR_UPDATE_COMPANY_ID" Method="SPR_UPDATE_COMPANY_ID">
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOMBRE_EMPRESA" Parameter="nOMBRE_EMPRESA" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="NIT_EMPRESA" Parameter="nIT_EMPRESA" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="DIRECCION_EMPRESA" Parameter="dIRECCION_EMPRESA" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="TELEFONO_EMPRESA" Parameter="tELEFONO_EMPRESA" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CORREO_EMPRESA" Parameter="cORREO_EMPRESA" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SPR_UPDATE_USUARIO" Method="SPR_UPDATE_USUARIO">
+    <Parameter Name="ID_USUARIO" Parameter="iD_USUARIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDENTFICACION" Parameter="iDENTFICACION" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="TIPO_IDENTIFICACION" Parameter="tIPO_IDENTIFICACION" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="NOMBRES" Parameter="nOMBRES" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="APELLIDOS" Parameter="aPELLIDOS" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="IMAGEN" Parameter="iMAGEN" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="GENERO" Parameter="gENERO" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="FECHA_NACIMIENTO" Parameter="fECHA_NACIMIENTO" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="NUMERO" Parameter="nUMERO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_AREA" Parameter="iD_AREA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_TIPO_USUARIO" Parameter="iD_TIPO_USUARIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_ROL" Parameter="iD_ROL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NOMBRE_USUARIO" Parameter="nOMBRE_USUARIO" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="CONTRASENIA" Parameter="cONTRASENIA" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SPR_UPDATE_USUARIO_CONTRASENA" Method="SPR_UPDATE_USUARIO_CONTRASENA">
+    <Parameter Name="ID_USUARIO" Parameter="iD_USUARIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CONTRASENIA" Parameter="cONTRASENIA" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

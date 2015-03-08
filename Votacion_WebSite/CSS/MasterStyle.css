@@ -1,0 +1,270 @@
+/*
+Credit: http://www.templatemo.com
+*/
+
+body{ 
+	margin: 0;
+	padding: 0;
+	color: #555;
+	font-size: 12px;
+	line-height: 1.6em; 
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color: #c7c8c1;
+	background-image:  url(../IMG/ImgMaster/templatemo_background.png);
+	background-repeat: repeat
+}
+
+a, a:link, a:visited { 
+	color: #525111; 
+	font-weight: normal; 
+	text-decoration: none; 
+}
+
+a:hover { 
+	text-decoration: underline; 
+}
+
+ul, li {
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+
+h1, h2, h3, h4, h5, h6 { color: #525111; font-weight: normal; }
+h1 { font-size: 36px; margin: 0 0 30px; padding: 5px 0 }
+h2 { font-size: 24px; margin: 0 0 25px; padding: 5px 0 }
+h3 { font-size: 20px; margin: 0 0 20px; padding: 0; }
+h4 { font-size: 16px; margin: 0 0 15px; padding: 0; }
+h5 { font-size: 14px; margin: 0 0 10px; padding: 0;  }
+h6 { font-size: 12px; margin: 0 0 5px; padding: 0; font-weight: 700 }
+
+p { 
+	padding: 0; 
+	margin: 0 0 15px 0; 
+}
+
+.clear{
+	clear:left;
+}
+
+cite { 
+	font-weight: bold; 
+	color:#525111; 
+}
+
+cite a, cite a:link, cite a:visited  { 
+	font-size: 12px; 
+	text-decoration: none; 
+	font-style: normal; 
+}
+
+cite span { 
+	font-weight: 400; 
+	color: #525111; 
+}
+
+.list_bullet { 
+	margin: 10px 0 10px 15px; 
+	padding: 0; 
+	list-style: none; 
+} 
+}
+
+.list_bullet li a { 
+	color: #555; 
+	font-weight: normal; 
+	text-decoration: none; 
+}
+
+.list_bullet li a:hover { 
+	color: #555; 
+}
+
+.no_bullet { 
+	margin: 0; 
+	padding: 0; 
+	list-style: none; 
+}
+
+.no_bullet li { 
+	margin: 0 0 20px 0; 
+	padding: 0; 
+}
+
+a.header { 
+	display: block; 
+	font-weight: 700; 
+}
+
+.half { 
+	width: 360px; 
+}
+
+.col_175 { 
+	width: 175px; 
+}
+
+.h10 { height: 10px }
+.h20 { height: 20px }
+.h40 { height: 40px }
+
+.img { 
+	margin: 0; 
+	padding: 0;
+}
+
+.img_border { 
+	background: #cacac6; 
+	padding: 4px; 
+	border: 1px solid #a9a99e; 
+}
+
+.img_nom { 
+	display: block; 
+	margin-bottom: 15px; 
+}
+
+.img_fl { 
+	float: left; 
+	margin: 3px 15px 5px 0; 
+}
+
+.img_fr { 
+	float: left; 
+	margin: 3px 0 5px 15px; 
+}
+
+.left { 
+	float: left; 
+}
+
+.right { 
+	float: right; 
+}
+
+#templatemo_header_wrapper 
+{
+    text-align:center;
+	width: 100%;
+	background: url(../IMG/ImgMaster/templatemo_header.png) center bottom no-repeat 
+}
+
+#templatemo_header {
+	width: 100%;
+	text-align: center;
+}
+
+#templatemo_main_wrapper 
+{
+	text-align:center;
+    height:100%;
+	width: 100%;
+	background:url(../IMG/ImgMaster/templatemo_wrapper.png) center top repeat-y;
+}
+
+#templatemo_main {
+	width: 820px;
+	margin: auto;
+	margin-left:auto;
+	margin-right:auto;
+	align:center;
+}
+
+/*#content{
+	width: 100%;
+	text-align:left;
+	margin-left: 260px;
+}*/
+
+#templatemo_footer_wrapper  {
+	width: 100%;
+	background: url(../IMG/ImgMaster/templatemo_footer.png) center top no-repeat
+}
+
+#templatemo_footer {
+	width: 780px;
+	margin: 0 auto;
+	padding: 20px 20px;
+	text-align: center
+}
+
+#site_title { 
+	display: block; 
+	width: 300px; 
+	margin: 0 auto;
+	text-align:center;
+}
+
+#site_title a { 
+	display: block; 
+	width: 300px; 
+	text-align: center; 
+	background: url(../IMG/ImgMaster/templatemo_logo.png) no-repeat top center; 
+	color: #333; 
+	letter-spacing: 4px;
+}
+
+#templatemo_header #intro_text { 
+	margin-top: 20px; 
+	font-size: 16px;
+	text-align:center;
+}
+.intro_bg_by {
+	width:50px;
+	height:50px;
+	display:block;
+	position:absolute;
+	right:0;
+	top:0;
+	overflow:hidden;
+	cursor:default;
+}
+
+.btns{
+cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/
+padding:5px 25px; /*add some padding to the inside of the button*/
+background:#717171; /*the colour of the button*/
+border:1px solid #404113; /*required or the default border for the browser will appear*/
+/*give the button curved corners, alter the size as required*/
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+/*give the button a drop shadow*/
+-webkit-box-shadow: 0 0 4px rgba(0,0,0, .75);
+-moz-box-shadow: 0 0 4px rgba(0,0,0, .75);
+box-shadow: 0 0 4px rgba(0,0,0, .75);
+/*style the text*/
+color:#f3f3f3;
+font-size:1.1em;
+}
+/***NOW STYLE THE BUTTON'S HOVER AND FOCUS STATES***/
+.btns:hover, .btns:focus{
+background-color :#4D4D4D; /*make the background a little darker*/
+/*reduce the drop shadow size to give a pushed button effect*/
+-webkit-box-shadow: 0 0 1px rgba(0,0,0, .75);
+-moz-box-shadow: 0 0 1px rgba(0,0,0, .75);
+box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+
+.txts {
+ background-color:rgba(255, 255, 255, 0.5);
+ width: auto;
+ height: auto;
+ margin: 0 auto 15px auto;
+ padding: 5px;
+ border: 1px double #404113;
+ -moz-border-radius: 11px;
+ -webkit-border-radius: 11px;
+ border-radius: 11px;
+-webkit-box-shadow: 2px 2px 2px rgba(0,0,0, .75), 2px 2px 2px rgba(0,0,0, .75) inset;
+-moz-box-shadow: 2px 2px 2px rgba(0,0,0, .75), 2px 2px 2px rgba(0,0,0, .75) inset;
+box-shadow: 2px 2px 2px rgba(0,0,0, .75), 2px 2px 2px rgba(0,0,0, .75) inset;
+}
+
+#divLogin
+{
+    background:url(../IMG/ImgMaster/templatemo_login.png) no-repeat center;
+    width:100%;
+    height:184px;
+	text-align:left;
+}

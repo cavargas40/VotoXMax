@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 10.875" name="DBVotacionesPG">
+  <DataContextMoniker Name="/DBVotacionesPGDataContext" />
+  <nestedChildShapes>
+    <classShape Id="dd6efaaa-8230-4727-9208-86c19a56613a" absoluteBounds="3.5, 5.25, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/AREA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5073020d-54f0-44ba-928c-6db7750f337b" absoluteBounds="3.515, 5.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d8b51925-a2e5-44f3-a0e8-6dbab90a14d4" absoluteBounds="9.25, 4.25, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/USUARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4293a779-75ff-4f67-8963-d7eab89e2d45" absoluteBounds="9.265, 4.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e02e740b-6c67-42c4-9819-ea2df3ee0e96" absoluteBounds="6.25, 5.25, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/AREA_SESION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="06c7e89c-16b6-41a0-819b-31ca644a005c" absoluteBounds="6.265, 5.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="94327bd4-6baa-4f36-a228-464594c69704" absoluteBounds="0.75, 5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/EMPRESA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="855d5e93-908b-46e6-a37a-fc5436b90e26" absoluteBounds="0.765, 5.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="84b2fb78-6bb2-4517-9140-a6f94f0e6e7e" absoluteBounds="9.25, 9.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/ROL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c148dff6-b2a0-4b1a-bac1-1528b50c0bfa" absoluteBounds="9.265, 9.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="98861daa-e1b5-4011-87ce-b90d954cfc36" absoluteBounds="12, 5.25, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/ROL_USUARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f353fafd-b01b-4a7d-a776-2f3632d5f9ea" absoluteBounds="12.015, 5.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5e21b031-a05d-4105-81b7-0b09d88d23b0" absoluteBounds="12, 2.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/SESION_CANDIDATO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a084a00-a390-4e4d-90f2-e09c5433c37a" absoluteBounds="12.015, 2.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="88208eee-96a0-4fd4-bbe4-225a1c1e393c" absoluteBounds="12, 8, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/SESION_USUARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9b268723-c993-413f-851b-b5b53379a401" absoluteBounds="12.015, 8.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbf43ccd-a2a0-4b1e-b464-08500f0bf4ef" absoluteBounds="9.25, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/SESION_VOTACION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ca5e7ff-e413-486b-a22a-d38211dbd5d3" absoluteBounds="9.265, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="575ca576-694b-4755-993f-0902cafe7ad5" absoluteBounds="6.5, 2.375, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/DBVotacionesPGDataContext/TIPO_USUARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ec6477a4-bfa5-4b3e-9f2a-8dd46120c3bf" absoluteBounds="6.515, 2.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.5 : 6.6362939453125); (4.5 : 7.09780160677083); (9.25 : 7.09780160677083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/AREA/AREA_USUARIO" />
+      <nodes>
+        <classShapeMoniker Id="dd6efaaa-8230-4727-9208-86c19a56613a" />
+        <classShapeMoniker Id="d8b51925-a2e5-44f3-a0e8-6dbab90a14d4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 5.94314697265625); (6.25 : 5.94314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/AREA/AREA_AREA_SESION" />
+      <nodes>
+        <classShapeMoniker Id="dd6efaaa-8230-4727-9208-86c19a56613a" />
+        <classShapeMoniker Id="e02e740b-6c67-42c4-9819-ea2df3ee0e96" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.94314697265625); (3.5 : 5.94314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/EMPRESA/EMPRESA_AREA" />
+      <nodes>
+        <classShapeMoniker Id="94327bd4-6baa-4f36-a228-464594c69704" />
+        <classShapeMoniker Id="dd6efaaa-8230-4727-9208-86c19a56613a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 9.375); (11.625 : 9); (11.625 : 5.94314697265625); (12 : 5.94314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/ROL/ROL_ROL_USUARIO" />
+      <nodes>
+        <classShapeMoniker Id="84b2fb78-6bb2-4517-9140-a6f94f0e6e7e" />
+        <classShapeMoniker Id="98861daa-e1b5-4011-87ce-b90d954cfc36" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 5.53407348632813); (11.6041666666667 : 5.53407348632813 : JumpStart); (11.7708333333333 : 5.53407348632813 : JumpEnd); (12 : 5.53407348632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/USUARIO/USUARIO_ROL_USUARIO" />
+      <nodes>
+        <classShapeMoniker Id="d8b51925-a2e5-44f3-a0e8-6dbab90a14d4" />
+        <classShapeMoniker Id="98861daa-e1b5-4011-87ce-b90d954cfc36" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 4.25); (11.625 : 3.875); (11.625 : 4.0112939453125); (11.6285744349011 : 4.00771951041138 : JumpStart); (11.7464255650989 : 3.88986838021362 : JumpEnd); (12 : 3.6362939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/USUARIO/USUARIO_SESION_CANDIDATO" />
+      <nodes>
+        <classShapeMoniker Id="d8b51925-a2e5-44f3-a0e8-6dbab90a14d4" />
+        <classShapeMoniker Id="5e21b031-a05d-4105-81b7-0b09d88d23b0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 7.52546111438301); (11.4375 : 8.0602688066907); (11.4375 : 7.40427764513221); (11.5660744349011 : 7.53285208003333 : JumpStart); (11.6839255650989 : 7.65070321023109 : JumpEnd); (12.0332223548678 : 8)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/USUARIO/USUARIO_SESION_USUARIO" />
+      <nodes>
+        <classShapeMoniker Id="d8b51925-a2e5-44f3-a0e8-6dbab90a14d4" />
+        <classShapeMoniker Id="88208eee-96a0-4fd4-bbe4-225a1c1e393c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 7.5300764989984); (11.8125 : 8.0925764989984); (11.8125 : 7.8442132023738); (12 : 8.0317132023738)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/USUARIO/USUARIO_SESION_USUARIO1" />
+      <nodes>
+        <classShapeMoniker Id="d8b51925-a2e5-44f3-a0e8-6dbab90a14d4" />
+        <classShapeMoniker Id="88208eee-96a0-4fd4-bbe4-225a1c1e393c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.25 : 1.53125); (6.34375 : 1.53125); (6.34375 : 5.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/SESION_VOTACION/SESION_VOTACION_AREA_SESION" />
+      <nodes>
+        <classShapeMoniker Id="cbf43ccd-a2a0-4b1e-b464-08500f0bf4ef" />
+        <classShapeMoniker Id="e02e740b-6c67-42c4-9819-ea2df3ee0e96" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 2.67390055338542); (12 : 2.67390055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/SESION_VOTACION/SESION_VOTACION_SESION_CANDIDATO" />
+      <nodes>
+        <classShapeMoniker Id="cbf43ccd-a2a0-4b1e-b464-08500f0bf4ef" />
+        <classShapeMoniker Id="5e21b031-a05d-4105-81b7-0b09d88d23b0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 3.03472318369391); (11.6875 : 3.47222318369391); (11.6875 : 9.02870772228065); (12 : 9.02870772228065)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/SESION_VOTACION/SESION_VOTACION_SESION_USUARIO" />
+      <nodes>
+        <classShapeMoniker Id="cbf43ccd-a2a0-4b1e-b464-08500f0bf4ef" />
+        <classShapeMoniker Id="88208eee-96a0-4fd4-bbe4-225a1c1e393c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.40625 : 3.56899251302083); (8.40625 : 4.71875); (9.25 : 4.71875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBVotacionesPGDataContext/TIPO_USUARIO/TIPO_USUARIO_USUARIO" />
+      <nodes>
+        <classShapeMoniker Id="575ca576-694b-4755-993f-0902cafe7ad5" />
+        <classShapeMoniker Id="d8b51925-a2e5-44f3-a0e8-6dbab90a14d4" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
