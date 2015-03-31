@@ -85,11 +85,23 @@ namespace Votacion_BO
 
         public List<SESION_VOTACION> SesionesVotaciones(int pIdCandidato, int pIdEmpresa)
         {
-            var slv = from v in contextoVotacion.SESION_VOTACION
-                      where DateTime.Now >= v.FECHA_INI_INSCRIPCION.Value && DateTime.Now <= v.FECHA_FIN_INSCRIPCION.Value && v.ID_EMPRESA == pIdEmpresa
-                      select v;
+
+            var query = (from ars in contextoVotacion.AREA_SESION
+                         join us in contextoVotacion.USUARIO
+                         on ars.ID_AREA equals us.ID_AREA
+                         join sv in contextoVotacion.SESION_VOTACION
+                         on ars.ID_SESION equals sv.ID_SESION
+                         where ars.ID_AREA == 2 &&
+                         DateTime.Now >= sv.FECHA_INI_INSCRIPCION.Value &&
+                         DateTime.Now <= sv.FECHA_FIN_INSCRIPCION.Value &&
+                         sv.ID_EMPRESA == pIdEmpresa
+                         select sv).Distinct();
+
+            //var slv = from v in contextoVotacion.SESION_VOTACION
+            //          where DateTime.Now >= v.FECHA_INI_INSCRIPCION.Value && DateTime.Now <= v.FECHA_FIN_INSCRIPCION.Value && v.ID_EMPRESA == pIdEmpresa
+            //          select v;
             List<SESION_VOTACION> newLstSession = new List<SESION_VOTACION>();
-            foreach (var i in slv)
+            foreach (var i in query)
             {
                 int cnt = contextoVotacion.SESION_CANDIDATO.Where(c => c.ID_CANDIDATO.Equals(pIdCandidato) && c.ID_SESION.Equals(i.ID_SESION)).ToList().Count;
                 if (cnt == 0)
