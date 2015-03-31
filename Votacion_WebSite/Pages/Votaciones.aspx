@@ -18,27 +18,6 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Label ID="lblFechaIni" Text="Fecha Inicial:" runat="server" />
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txtFechaIni" CssClass="txts" runat="server" onkeydown="return false;"/>
-                                <asp:RequiredFieldValidator ID="rfvtxtFechaIni" ControlToValidate="txtFechaIni" runat="server" ErrorMessage="Fecha Inicio Requerida" ValidationGroup="A"/>
-                                <asp:CalendarExtender ID="cetxtFechaIni" TargetControlID="txtFechaIni" Format="dd/MM/yyyy" runat="server"/>
-                            </td>
-                            <td>
-                                <asp:Label ID="lblFechaFin" Text="Fecha Final:" runat="server" />
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txtFechaFin" CssClass="txts" runat="server" onkeydown="return false;"/>
-                                <asp:RequiredFieldValidator ID="rfvtxtFechaFin" ControlToValidate="txtFechaFin" Format="dd/MM/yyyy" runat="server" ErrorMessage="Fecha fin Requerida" ValidationGroup="A"/>
-                                <asp:CalendarExtender ID="cetxtFechaFin" TargetControlID="txtFechaFin" Format="dd/MM/yyyy" runat="server"/>
-                            </td>
-                            <tr>
-                                <td colspan="4"><asp:Label ID="lblErrorFecha" runat="server" /></td>
-                            </tr>
-                        </tr>
-                        <tr>
-                            <td>
                                 <asp:Label ID="lblFechaInsIni" Text="Fecha Inscripción Inicial:" runat="server" />
                             </td>
                             <td>
@@ -58,6 +37,28 @@
                             <td colspan="4"><asp:Label ID="lblErrorFechaIns" runat="server" /></td>
                             </tr>
                         </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblFechaIni" Text="Fecha Inicial:" runat="server" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtFechaIni" CssClass="txts" runat="server" onkeydown="return false;"/>
+                                <asp:RequiredFieldValidator ID="rfvtxtFechaIni" ControlToValidate="txtFechaIni" runat="server" ErrorMessage="Fecha Inicio Requerida" ValidationGroup="A"/>
+                                <asp:CalendarExtender ID="cetxtFechaIni" TargetControlID="txtFechaIni" Format="dd/MM/yyyy" runat="server"/>
+                            </td>
+                            <td>
+                                <asp:Label ID="lblFechaFin" Text="Fecha Final:" runat="server" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtFechaFin" CssClass="txts" runat="server" onkeydown="return false;"/>
+                                <asp:RequiredFieldValidator ID="rfvtxtFechaFin" ControlToValidate="txtFechaFin" Format="dd/MM/yyyy" runat="server" ErrorMessage="Fecha fin Requerida" ValidationGroup="A"/>
+                                <asp:CalendarExtender ID="cetxtFechaFin" TargetControlID="txtFechaFin" Format="dd/MM/yyyy" runat="server"/>
+                            </td>
+                            <tr>
+                                <td colspan="4"><asp:Label ID="lblErrorFecha" runat="server" /></td>
+                            </tr>
+                        </tr>
+                        
                         <tr>
                             <td colspan="4"><asp:Label ID="lblAreas" Text="Grupo areas de trabajo de la empresa que permiten acceder a la votación" runat="server" /></td>
                         </tr>
@@ -91,6 +92,7 @@
                             <asp:BoundField DataField="FECHA_FIN" HeaderText="Fecha Fin" />
                             <asp:BoundField DataField="FECHA_INI_INSCRIPCION" HeaderText="Fecha Inicio Inscripción" />
                             <asp:BoundField DataField="FECHA_FIN_INSCRIPCION" HeaderText="Fecha Fin Inscripción" />
+                            <asp:BoundField DataField="USUARIO_CANDIDATO" HeaderText="Ganador Parcial"  />
                         </Columns>
                         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />

@@ -49,6 +49,7 @@ namespace Votacion_WebSite.Pages
                 dtSesVot.Columns.Add("FECHA_FIN");
                 dtSesVot.Columns.Add("FECHA_INI_INSCRIPCION");
                 dtSesVot.Columns.Add("FECHA_FIN_INSCRIPCION");
+                dtSesVot.Columns.Add("USUARIO_CANDIDATO");
                 List<SESION_VOTACION> lstsv = new VotacionBO().ConsultarVotaciones(Convert.ToInt32(((DataSet)Session["dsUser"]).Tables[0].Rows[0]["ID_EMPRESA"]));
                 foreach (SESION_VOTACION item in lstsv)
                 {
@@ -59,6 +60,7 @@ namespace Votacion_WebSite.Pages
                     r["FECHA_FIN"] = item.FECHA_FIN.Value.ToString("dd/MM/yyyy");
                     r["FECHA_INI_INSCRIPCION"] = item.FECHA_INI_INSCRIPCION.Value.ToString("dd/MM/yyyy");
                     r["FECHA_FIN_INSCRIPCION"] = item.FECHA_FIN_INSCRIPCION.Value.ToString("dd/MM/yyyy");
+                    r["USUARIO_CANDIDATO"] = new VotacionBO().ConsultarGanadorParcial(item.ID_SESION);
                     dtSesVot.Rows.Add(r);
                 }
                 gdvVotaciones.DataSource = dtSesVot;
@@ -213,7 +215,7 @@ namespace Votacion_WebSite.Pages
             {
                 bool bien = false;
 
-                if (DateTime.Parse(txtFechaInsIni.Text) > DateTime.Now)
+                if (DateTime.Parse(txtFechaInsIni.Text).Date >= DateTime.Now.Date)
                 {
                     if (DateTime.Parse(txtFechaInsIni.Text) <= DateTime.Parse(txtFechaInsFin.Text))
                     {
@@ -253,7 +255,7 @@ namespace Votacion_WebSite.Pages
                 }
                 else
                 {
-                    lblErrorFechaIns.Text = "La fecha Inicial de Inscripción debe ser mayor a la Fecha actual";
+                    lblErrorFechaIns.Text = "La fecha Inicial de Inscripción no debe ser menor al  dia de hoy";
                 }
 
                 return bien;
