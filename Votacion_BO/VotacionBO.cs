@@ -86,14 +86,18 @@ namespace Votacion_BO
         public List<SESION_VOTACION> SesionesVotaciones(int pIdCandidato, int pIdEmpresa)
         {
 
+            List<USUARIO> sc = (from sv in contextoVotacion.USUARIO
+                                where sv.ID_USUARIO == pIdCandidato
+                                select sv).ToList();
+
             var query = (from ars in contextoVotacion.AREA_SESION
                          join us in contextoVotacion.USUARIO
                          on ars.ID_AREA equals us.ID_AREA
                          join sv in contextoVotacion.SESION_VOTACION
                          on ars.ID_SESION equals sv.ID_SESION
-                         where ars.ID_AREA == 2 &&
-                         DateTime.Now >= sv.FECHA_INI_INSCRIPCION.Value &&
-                         DateTime.Now <= sv.FECHA_FIN_INSCRIPCION.Value &&
+                         where ars.ID_AREA == (sc.Count > 0 ? sc[0].ID_AREA : 0) &&
+                         DateTime.Now.Date >= sv.FECHA_INI_INSCRIPCION.Value.Date &&
+                         DateTime.Now.Date <= sv.FECHA_FIN_INSCRIPCION.Value.Date &&
                          sv.ID_EMPRESA == pIdEmpresa
                          select sv).Distinct();
 
