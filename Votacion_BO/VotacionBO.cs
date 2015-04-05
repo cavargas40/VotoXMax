@@ -342,9 +342,15 @@ namespace Votacion_BO
         {
             try
             {
-                contextoVotacion.AREA_SESION.DeleteOnSubmit(pAreaSes);
-                contextoVotacion.SubmitChanges();
-                return true;
+                AREA_SESION deleteAS = contextoVotacion.AREA_SESION.SingleOrDefault(c => c.ID_AREA == pAreaSes.ID_AREA && c.ID_SESION == pAreaSes.ID_SESION);
+                if (deleteAS != null)
+                {
+                    contextoVotacion.AREA_SESION.DeleteOnSubmit(deleteAS);
+                    contextoVotacion.SubmitChanges();
+                    return true;
+                }
+                else
+                    return false;
             }
             catch (Exception ex)
             {

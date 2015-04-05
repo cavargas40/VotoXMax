@@ -125,9 +125,9 @@ namespace Votacion_WebSite.Pages
                 {
                     foreach (ListItem i in cblstAreas.Items)
                     {
+                        new VotacionBO().EliminarAreaVotaciones(new AREA_SESION() { ID_AREA = int.Parse(i.Value), ID_SESION = Convert.ToInt32(gdvVotaciones.SelectedValue) });
                         if (i.Selected)
                         {
-                            new VotacionBO().EliminarAreaVotaciones(new AREA_SESION() { ID_AREA = int.Parse(i.Value), ID_SESION = Convert.ToInt32(gdvVotaciones.SelectedValue) });
                             new VotacionBO().InsertarAreaSesion(new AREA_SESION() { ID_AREA = int.Parse(i.Value), ID_SESION = Convert.ToInt32(gdvVotaciones.SelectedValue) });
                         }
                     }
@@ -181,7 +181,7 @@ namespace Votacion_WebSite.Pages
             btnGuardar.Visible = false;
             btnGuardarSalir.Visible = false;
             panCampos.GroupingText = "Editando Votación...";
-            if (sv.FECHA_INICIO.Value > DateTime.Now && DateTime.Now < sv.FECHA_FIN)
+            if (DateTime.Now > sv.FECHA_INICIO.Value && DateTime.Now < sv.FECHA_FIN)
             {
                 txtCampania.Enabled = false;
                 txtFechaFin.Enabled = false;
@@ -194,7 +194,7 @@ namespace Votacion_WebSite.Pages
                 panCampos.GroupingText = "No es posible editarlo ya que los usuarios estan realizando votos...";
                 panCampos.BorderColor = Color.Red;
             }
-            else if (sv.FECHA_INI_INSCRIPCION.Value > DateTime.Now && DateTime.Now < sv.FECHA_FIN_INSCRIPCION)
+            else if (DateTime.Now > sv.FECHA_INI_INSCRIPCION.Value && DateTime.Now < sv.FECHA_FIN_INSCRIPCION)
             {
                 txtCampania.Enabled = false;
                 txtFechaFin.Enabled = false;

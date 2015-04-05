@@ -83,14 +83,27 @@ namespace Votacion_WebSite.Pages
         /// <param name="e"></param>
         protected void gvArea_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            Label lb_AREA = new Label();
             try
             {
+                lblError.Visible = false;
+                lblError.Text = String.Empty;
                 Label lbID_AREA = gvArea.Rows[e.RowIndex].FindControl("lbID_AREA") as Label;
+                lb_AREA = gvArea.Rows[e.RowIndex].FindControl("lbNOMBRE_AREA") as Label;
                 deleteArea(int.Parse(lbID_AREA.Text));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                if (ex.Message.Contains("dbo.AREA_SESION"))
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "No se puede eliminar " + lb_AREA.Text + " porque está programada para una votación, Por favor verifique que no esté seleccionada y que no esté en este momento realizando votaciones en la opción Votación del menú principal";
+                }
+                else if (ex.Message.Contains("dbo.USUARIO"))
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "No se puede eliminar " + lb_AREA.Text + " porque hay usuarios registrado en el área, Por favor verifique que no haya usuarios";
+                }
             }
         }
         /// <summary>
@@ -233,9 +246,9 @@ namespace Votacion_WebSite.Pages
                 loadAreas(int.Parse(ddlCompany.SelectedValue));
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                throw ex;
             }
         }
         /// <summary>

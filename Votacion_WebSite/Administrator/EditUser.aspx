@@ -66,8 +66,8 @@
             <asp:UpdatePanel runat="server">
                 <contenttemplate>
                  <li>
-                
-                <asp:TextBox runat="server" ID="Identificacion" onkeypress="return !((event.keyCode < 48) || (event.keyCode > 57));"
+                <%--onkeypress="return !((event.keyCode < 48) || (event.keyCode > 57));"--%>
+                <asp:TextBox runat="server" ID="Identificacion" 
                     MaxLength="12" OnTextChanged="Identificacion_TextChanged" AutoPostBack="true" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="Identificacion"
                     CssClass="field-validation-error" ErrorMessage="<br>La identificacion es requerida."
