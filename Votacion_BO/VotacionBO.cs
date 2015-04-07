@@ -268,6 +268,26 @@ namespace Votacion_BO
             }
         }
 
+        public string ConsultarNumeroVotosGanadorParcial(int iIdSesion)
+        {
+            try
+            {
+                var sqlQuery = contextoVotacion.SESION_USUARIO
+                           .Where(a => a.ID_SESION == iIdSesion)
+                           .GroupBy(a => a.ID_USUARIO_CANDIDATO)
+                           .Select(g => new { ID_USUARIO_CANDIDATO = g.Key, NumeroVotos = g.Count() })
+                           .OrderByDescending(x => x.NumeroVotos).ToList();
+
+                var query = sqlQuery.Count <= 0 ? 0 : sqlQuery.Max(c => c.NumeroVotos);
+
+                return query.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public SESION_VOTACION ConsultarVotacionesPorId(int pKey)
         {
             try

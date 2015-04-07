@@ -93,6 +93,7 @@
                             <asp:BoundField DataField="FECHA_INI_INSCRIPCION" HeaderText="Fecha Inicio Inscripción" />
                             <asp:BoundField DataField="FECHA_FIN_INSCRIPCION" HeaderText="Fecha Fin Inscripción" />
                             <asp:BoundField DataField="USUARIO_CANDIDATO" HeaderText="Ganador Parcial"  />
+                            <asp:BoundField DataField="NUMERO_VOTOS" HeaderText="Número de Votos"  />
                         </Columns>
                         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />

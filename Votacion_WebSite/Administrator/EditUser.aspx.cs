@@ -162,7 +162,7 @@ namespace Votacion_WebSite.Administrator
                 {
                     try
                     {
-                        var finalPath = Server.MapPath("~") + "IMG/Candidatos/" + ImageUrl.FileName;
+                        var finalPath = Server.MapPath("~") + "/IMG/Candidatos/" + ImageUrl.FileName;
                         //var finalPath = WebConfigurationManager.AppSettings.Get("RutaImagen")
                         //                + this.Identificacion.Text + fileExtension;
                         this.ImageUrl.SaveAs(finalPath);

@@ -50,6 +50,7 @@ namespace Votacion_WebSite.Pages
                 dtSesVot.Columns.Add("FECHA_INI_INSCRIPCION");
                 dtSesVot.Columns.Add("FECHA_FIN_INSCRIPCION");
                 dtSesVot.Columns.Add("USUARIO_CANDIDATO");
+                dtSesVot.Columns.Add("NUMERO_VOTOS");
                 List<SESION_VOTACION> lstsv = new VotacionBO().ConsultarVotaciones(Convert.ToInt32(((DataSet)Session["dsUser"]).Tables[0].Rows[0]["ID_EMPRESA"]));
                 foreach (SESION_VOTACION item in lstsv)
                 {
@@ -61,6 +62,7 @@ namespace Votacion_WebSite.Pages
                     r["FECHA_INI_INSCRIPCION"] = item.FECHA_INI_INSCRIPCION.Value.ToString("dd/MM/yyyy");
                     r["FECHA_FIN_INSCRIPCION"] = item.FECHA_FIN_INSCRIPCION.Value.ToString("dd/MM/yyyy");
                     r["USUARIO_CANDIDATO"] = new VotacionBO().ConsultarGanadorParcial(item.ID_SESION);
+                    r["NUMERO_VOTOS"] = new VotacionBO().ConsultarNumeroVotosGanadorParcial(item.ID_SESION);
                     dtSesVot.Rows.Add(r);
                 }
                 gdvVotaciones.DataSource = dtSesVot;
