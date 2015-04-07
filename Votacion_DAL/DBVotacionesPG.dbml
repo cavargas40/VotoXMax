@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VotacionesPG" Class="DBVotacionesPGDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DANIEL-PC\SQLEXPRESS;Initial Catalog=VotacionesPG;Persist Security Info=True;User ID=votomax" SettingsObjectName="Votacion_DAL.Properties.Settings" SettingsPropertyName="VotacionesPGConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=scitechdev.homedns.org;Initial Catalog=VotacionesPG;Persist Security Info=True;User ID=votomax" SettingsObjectName="Votacion_DAL.Properties.Settings" SettingsPropertyName="VotacionesPGConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AREA" Member="AREA">
     <Type Name="AREA">
       <Column Name="ID_AREA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
