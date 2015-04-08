@@ -88,7 +88,7 @@ namespace Votacion_WebSite.Pages
 
                     if (new VotacionBO().InscribirCandidato(cand))
                         if (new VotacionBO().RegistroCandidato(sc))
-                            Response.Redirect("~/Pages/Votar.aspx");
+                            Response.Redirect("~/Pages/InscribirUsuario.aspx");
                 }
                 else
                 {

@@ -229,17 +229,38 @@ namespace Votacion_BO
                            .Where(a => a.ID_SESION == iIdSesion)
                            .GroupBy(a => a.ID_USUARIO_CANDIDATO)
                            .Select(g => new { ID_USUARIO_CANDIDATO = g.Key, NumeroVotos = g.Count() })
-                           .OrderByDescending(x => x.NumeroVotos).Take(1).ToList();
+                           .OrderByDescending(x => x.NumeroVotos).ToList();
 
-                List<USUARIO> sqlQuery2 = (from cg in contextoVotacion.USUARIO
-                                           where cg.ID_USUARIO ==
-                                           (sqlQuery != null && sqlQuery.Count > 0 ?
-                                           Convert.ToInt32(sqlQuery[0].ID_USUARIO_CANDIDATO)
-                                           : 0)
-                                           select cg).ToList();
+                var query = sqlQuery.Count <= 0 ? 0 : sqlQuery.Max(c => c.NumeroVotos);
 
-                return sqlQuery2.Count > 0 ? sqlQuery2[0].NOMBRES + "  " + sqlQuery2[0].APELLIDOS : "";
+                var query2 = sqlQuery.Where(c => c.NumeroVotos == query);
+                string ganador = "";
+                if (query2.Count() > 1)
+                {
+                    ganador = "Empate entre:  ";
+                    foreach (var item in query2)
+                    {
+                        List<USUARIO> sqlQuery2 = (from cg in contextoVotacion.USUARIO
+                                                   where cg.ID_USUARIO ==
+                                                   (sqlQuery != null && sqlQuery.Count > 0 ?
+                                                   Convert.ToInt32(item.ID_USUARIO_CANDIDATO)
+                                                   : 0)
+                                                   select cg).ToList();
+                        ganador = ganador + " , " + sqlQuery2[0].NOMBRES + "  " + sqlQuery2[0].APELLIDOS + "  ";
+                    }
+                    return ganador;
+                }
+                else
+                {
+                    List<USUARIO> sqlQuery3 = (from cg in contextoVotacion.USUARIO
+                                               where cg.ID_USUARIO ==
+                                               (sqlQuery != null && sqlQuery.Count > 0 ?
+                                               Convert.ToInt32(sqlQuery[0].ID_USUARIO_CANDIDATO)
+                                               : 0)
+                                               select cg).ToList();
 
+                    return sqlQuery3.Count > 0 ? sqlQuery3[0].NOMBRES + "  " + sqlQuery3[0].APELLIDOS : "";
+                }
             }
             catch (Exception ex)
             {

@@ -17,7 +17,7 @@ namespace Votacion_WebSite.Pages
             {
                 if (Session["dsUser"] == null)
                 {
-                    Response.Redirect("sigIn.aspx");
+                    Response.Redirect("~/Inicio.aspx");
                 }
                 else
                 {
