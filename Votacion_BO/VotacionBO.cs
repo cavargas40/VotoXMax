@@ -33,8 +33,8 @@ namespace Votacion_BO
                 var lstCandidatos = from cand in contextoVotacion.USUARIO
                                     join sess in contextoVotacion.SESION_CANDIDATO
                                     on cand.ID_USUARIO equals sess.ID_CANDIDATO
-                        where cand.ID_TIPO_USUARIO == 1 && sess.ID_SESION == pIdSession
-                        select new { cand.ID_USUARIO, cand.NOMBRES, cand.APELLIDOS, cand.GENERO, cand.NUMERO, cand.IMAGEN, cand.FECHA_NACIMIENTO };
+                                    where cand.ID_TIPO_USUARIO == 1 && sess.ID_SESION == pIdSession
+                                    select new { cand.ID_USUARIO, cand.NOMBRES, cand.APELLIDOS, cand.GENERO, cand.NUMERO, cand.IMAGEN, cand.FECHA_NACIMIENTO };
 
                 foreach (var item in lstCandidatos)
                 {
@@ -45,7 +45,8 @@ namespace Votacion_BO
                     fila["Genero"] = "Género: " + item.GENERO;
                     fila["Numero"] = "Nro. " + item.NUMERO;
                     fila["PathImagen"] = item.IMAGEN;
-                    fila["FechaNacimiento"] = "Fecha de Nacimiento: " + item.FECHA_NACIMIENTO.Value.ToString("dd/MM/yyyy");
+                    //fila["FechaNacimiento"] = "Fecha de Nacimiento: " + item.FECHA_NACIMIENTO == null ? DateTime.Now.ToString("dd/MM/yyyy") : item.FECHA_NACIMIENTO.Value.ToString("dd/MM/yyyy");
+                    fila["FechaNacimiento"] = "Fecha de Nacimiento: " + DateTime.Now.ToString("dd/MM/yyyy");
                     dtCandidatos.Rows.Add(fila);
                 }
                 fila = dtCandidatos.NewRow();
@@ -103,7 +104,7 @@ namespace Votacion_BO
         {
             var sessVot = from v in contextoVotacion.SESION_VOTACION
                           where DateTime.Now >= v.FECHA_INICIO.Value && DateTime.Now <= v.FECHA_FIN.Value && v.ID_EMPRESA == pIdEmpresa
-                    select v;
+                          select v;
             List<SESION_VOTACION> newLstSession = new List<SESION_VOTACION>();
             foreach (var i in sessVot)
             {
@@ -195,8 +196,8 @@ namespace Votacion_BO
             try
             {
                 return (from v in contextoVotacion.SESION_VOTACION
-                            where v.ID_EMPRESA == pIdEmpresa
-                            select v).ToList();
+                        where v.ID_EMPRESA == pIdEmpresa
+                        select v).ToList();
             }
             catch (Exception ex)
             {
@@ -209,8 +210,8 @@ namespace Votacion_BO
             try
             {
                 return (from sv in contextoVotacion.SESION_VOTACION
-                            where sv.ID_SESION == pKey
-                            select sv).Single();
+                        where sv.ID_SESION == pKey
+                        select sv).Single();
             }
             catch (Exception ex)
             {
@@ -223,8 +224,8 @@ namespace Votacion_BO
             try
             {
                 return (from a in contextoVotacion.AREA
-                            where a.ID_EMPRESA == pIdEmpres
-                            select a).ToList();
+                        where a.ID_EMPRESA == pIdEmpres
+                        select a).ToList();
 
             }
             catch (Exception ex)
@@ -238,8 +239,8 @@ namespace Votacion_BO
             try
             {
                 return (from arse in contextoVotacion.AREA_SESION
-                            where arse.ID_SESION == pIdSesion
-                            select arse).ToList();
+                        where arse.ID_SESION == pIdSesion
+                        select arse).ToList();
 
             }
             catch (Exception ex)

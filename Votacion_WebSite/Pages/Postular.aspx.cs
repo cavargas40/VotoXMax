@@ -42,8 +42,8 @@ namespace Votacion_WebSite.Pages
         {
             try
             {
-               // USUARIO userLogin = (USUARIO)Session["UserLogin"];
-                string imagen = ((DataSet) Session["dsUser"]).Tables[0].Rows[0]["IMAGEN"].ToString();
+                // USUARIO userLogin = (USUARIO)Session["UserLogin"];
+                string imagen = ((DataSet)Session["dsUser"]).Tables[0].Rows[0]["IMAGEN"].ToString();
                 imgCandidato.ImageUrl = imagen == "" ? "~/IMG/Candidatos/UsuarioNoFoto.jpg" : imagen;
             }
             catch (Exception ex)
@@ -79,7 +79,9 @@ namespace Votacion_WebSite.Pages
             }
             catch (Exception ex)
             {
-                throw ex;
+                lblMsgImgReq.Text = ex.Message;
+                lblMsgImgReq.ForeColor = System.Drawing.Color.Red;
+                //throw ex;
             }
         }
 

@@ -120,17 +120,17 @@
                     </tr>
                     <tr>
                         <td align="center" colspan="2">
-                            <cc1:CaptchaControl ID="Captcha1" runat="server" 
+                            <%--<cc1:CaptchaControl ID="Captcha1" runat="server" 
                             CaptchaBackgroundNoise="Low" CaptchaLength="5" 
                             CaptchaHeight="60" CaptchaWidth="200" 
                             CaptchaLineNoise="None" CaptchaMinTimeout="5" 
-                            CaptchaMaxTimeout="240" CssClass="txts" Visible="false" />
+                            CaptchaMaxTimeout="240" CssClass="txts" Visible="false" />--%>
                         </td>
                     </tr>
                     <tr>
                         <td align="center" colspan="2">
-                            <asp:TextBox ID="txtCaptcha" Visible="false" CssClass="txts" runat="server" />
-                            <asp:RequiredFieldValidator ID="rfvtxtCaptcha" runat="server" ValidationGroup="A" ControlToValidate="txtCaptcha" ErrorMessage="Captcha Requerida" SetFocusOnError="True"/>
+                          <%--  <asp:TextBox ID="txtCaptcha" Visible="false" CssClass="txts" runat="server" />
+                            <asp:RequiredFieldValidator ID="rfvtxtCaptcha" runat="server" ValidationGroup="A" ControlToValidate="txtCaptcha" ErrorMessage="Captcha Requerida" SetFocusOnError="True"/>--%>
                         </td>
                     </tr>
                     <tr>

@@ -73,6 +73,7 @@ namespace Votacion_WebSite.Administrator
             {
                 if (this.UserA != null && this.UserA.IdRol < 3)
                 {
+                    this.ListUsers = null;                    
                     this.LoadUsersGrid(0);
                 }
                 else

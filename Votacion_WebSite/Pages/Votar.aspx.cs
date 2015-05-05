@@ -90,18 +90,18 @@ namespace Votacion_WebSite.Pages
         {
             try
             {
-                Captcha1.ValidateCaptcha(txtCaptcha.Text.Trim());
-                if (Captcha1.UserValidated)
-                {
-                    SESION_USUARIO suser = new SESION_USUARIO();
-                    suser.ID_SESION = int.Parse(ddlsessionaVotar.SelectedValue);
-                    suser.ID_USUARIO = Convert.ToInt32(((DataSet)Session["dsUser"]).Tables[0].Rows[0]["ID_USUARIO"]);
-                    suser.TIPO_VOTO = "Normal";
-                    suser.FECHA_VOTO = DateTime.Now;
-                    suser.ID_USUARIO_CANDIDATO = (int)Session["SelectedKey"];
-                    new VotacionBO().RegistrarVoto(suser);
-                    Response.Redirect("~/Pages/Principal.aspx");
-                }
+                //Captcha1.ValidateCaptcha(txtCaptcha.Text.Trim());
+                //if (Captcha1.UserValidated)
+                //{
+                SESION_USUARIO suser = new SESION_USUARIO();
+                suser.ID_SESION = int.Parse(ddlsessionaVotar.SelectedValue);
+                suser.ID_USUARIO = Convert.ToInt32(((DataSet)Session["dsUser"]).Tables[0].Rows[0]["ID_USUARIO"]);
+                suser.TIPO_VOTO = "Normal";
+                suser.FECHA_VOTO = DateTime.Now;
+                suser.ID_USUARIO_CANDIDATO = Convert.ToInt32(Session["SelectedKey"]);
+                new VotacionBO().RegistrarVoto(suser);
+                Response.Redirect("~/Pages/Principal.aspx");
+                //}
             }
             catch (Exception ex)
             {
@@ -112,18 +112,18 @@ namespace Votacion_WebSite.Pages
         {
             try
             {
-                Captcha1.ValidateCaptcha(txtCaptcha.Text.Trim());
-                if (Captcha1.UserValidated)
-                {
-                    SESION_USUARIO suser = new SESION_USUARIO();
-                    suser.ID_SESION = int.Parse(ddlsessionaVotar.SelectedValue);
-                    suser.ID_USUARIO = Convert.ToInt32(((DataSet)Session["dsUser"]).Tables[0].Rows[0]["ID_USUARIO"]);
-                    suser.TIPO_VOTO = "Cancelado";
-                    suser.FECHA_VOTO = DateTime.Now;
-                    suser.ID_USUARIO_CANDIDATO = null;
-                    new VotacionBO().RegistrarVoto(suser);
-                    Response.Redirect("~/Pages/Principal.aspx");
-                }
+                //Captcha1.ValidateCaptcha(txtCaptcha.Text.Trim());
+                //if (Captcha1.UserValidated)
+                //{
+                SESION_USUARIO suser = new SESION_USUARIO();
+                suser.ID_SESION = int.Parse(ddlsessionaVotar.SelectedValue);
+                suser.ID_USUARIO = Convert.ToInt32(((DataSet)Session["dsUser"]).Tables[0].Rows[0]["ID_USUARIO"]);
+                suser.TIPO_VOTO = "Cancelado";
+                suser.FECHA_VOTO = DateTime.Now;
+                suser.ID_USUARIO_CANDIDATO = null;
+                new VotacionBO().RegistrarVoto(suser);
+                Response.Redirect("~/Pages/Principal.aspx");
+                //}
             }
             catch (Exception ex)
             {
@@ -137,8 +137,8 @@ namespace Votacion_WebSite.Pages
                 CargarCandidatos();
                 btnVotar.Visible = true;
                 btnCancelar.Visible = true;
-                Captcha1.Visible = true;
-                txtCaptcha.Visible = true;
+                //Captcha1.Visible = true;
+                //txtCaptcha.Visible = true;
             }
         }
     }
