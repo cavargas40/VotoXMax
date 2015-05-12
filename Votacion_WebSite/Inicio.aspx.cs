@@ -21,7 +21,9 @@ namespace Votacion_WebSite
         {
 
         }
-        protected void LoginButton_Click(object sender, EventArgs e)
+
+
+        protected void LoginButton_Click1(object sender, EventArgs e)
         {
             DataSet dsData;
             if (sigInUser(UserName.Text, Password.Text, out dsData))
@@ -29,6 +31,7 @@ namespace Votacion_WebSite
                 Response.Redirect("~/Pages/Principal.aspx");
             }
         }
+
         #endregion
 
         #region Methods
@@ -83,5 +86,6 @@ namespace Votacion_WebSite
             }
         }
         #endregion
+
     }
 }
