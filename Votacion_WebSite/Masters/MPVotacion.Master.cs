@@ -49,7 +49,7 @@ namespace Votacion_WebSite.Masters
         protected void lbExit_Click(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 Session.RemoveAll();
                 Response.Redirect("~/Inicio.aspx");
             }

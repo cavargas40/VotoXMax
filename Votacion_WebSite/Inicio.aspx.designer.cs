@@ -13,15 +13,6 @@ namespace Votacion_WebSite {
     public partial class Inicio {
         
         /// <summary>
-        /// UserNameLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserNameLabel;
-        
-        /// <summary>
         /// UserName control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace Votacion_WebSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired;
-        
-        /// <summary>
-        /// PasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PasswordLabel;
         
         /// <summary>
         /// Password control.
