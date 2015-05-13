@@ -85,11 +85,27 @@ namespace Votacion_BO
 
         public List<SESION_VOTACION> SesionesVotaciones(int pIdCandidato, int pIdEmpresa)
         {
-            var slv = from v in contextoVotacion.SESION_VOTACION
-                      where DateTime.Now >= v.FECHA_INI_INSCRIPCION.Value && DateTime.Now <= v.FECHA_FIN_INSCRIPCION.Value && v.ID_EMPRESA == pIdEmpresa
-                      select v;
+
+            List<USUARIO> sc = (from sv in contextoVotacion.USUARIO
+                                where sv.ID_USUARIO == pIdCandidato
+                                select sv).ToList();
+
+            var query = (from ars in contextoVotacion.AREA_SESION
+                         join us in contextoVotacion.USUARIO
+                         on ars.ID_AREA equals us.ID_AREA
+                         join sv in contextoVotacion.SESION_VOTACION
+                         on ars.ID_SESION equals sv.ID_SESION
+                         where ars.ID_AREA == (sc.Count > 0 ? sc[0].ID_AREA : 0) &&
+                         DateTime.Now.Date >= sv.FECHA_INI_INSCRIPCION.Value.Date &&
+                         DateTime.Now.Date <= sv.FECHA_FIN_INSCRIPCION.Value.Date &&
+                         sv.ID_EMPRESA == pIdEmpresa
+                         select sv).Distinct();
+
+            //var slv = from v in contextoVotacion.SESION_VOTACION
+            //          where DateTime.Now >= v.FECHA_INI_INSCRIPCION.Value && DateTime.Now <= v.FECHA_FIN_INSCRIPCION.Value && v.ID_EMPRESA == pIdEmpresa
+            //          select v;
             List<SESION_VOTACION> newLstSession = new List<SESION_VOTACION>();
-            foreach (var i in slv)
+            foreach (var i in query)
             {
                 int cnt = contextoVotacion.SESION_CANDIDATO.Where(c => c.ID_CANDIDATO.Equals(pIdCandidato) && c.ID_SESION.Equals(i.ID_SESION)).ToList().Count;
                 if (cnt == 0)
@@ -205,6 +221,73 @@ namespace Votacion_BO
             }
         }
 
+        public string ConsultarGanadorParcial(int iIdSesion)
+        {
+            try
+            {
+                var sqlQuery = contextoVotacion.SESION_USUARIO
+                           .Where(a => a.ID_SESION == iIdSesion)
+                           .GroupBy(a => a.ID_USUARIO_CANDIDATO)
+                           .Select(g => new { ID_USUARIO_CANDIDATO = g.Key, NumeroVotos = g.Count() })
+                           .OrderByDescending(x => x.NumeroVotos).ToList();
+
+                var query = sqlQuery.Count <= 0 ? 0 : sqlQuery.Max(c => c.NumeroVotos);
+
+                var query2 = sqlQuery.Where(c => c.NumeroVotos == query);
+                string ganador = "";
+                if (query2.Count() > 1)
+                {
+                    ganador = "Empate entre:  ";
+                    foreach (var item in query2)
+                    {
+                        List<USUARIO> sqlQuery2 = (from cg in contextoVotacion.USUARIO
+                                                   where cg.ID_USUARIO ==
+                                                   (sqlQuery != null && sqlQuery.Count > 0 ?
+                                                   Convert.ToInt32(item.ID_USUARIO_CANDIDATO)
+                                                   : 0)
+                                                   select cg).ToList();
+                        ganador = ganador + " , " + sqlQuery2[0].NOMBRES + "  " + sqlQuery2[0].APELLIDOS + "  ";
+                    }
+                    return ganador;
+                }
+                else
+                {
+                    List<USUARIO> sqlQuery3 = (from cg in contextoVotacion.USUARIO
+                                               where cg.ID_USUARIO ==
+                                               (sqlQuery != null && sqlQuery.Count > 0 ?
+                                               Convert.ToInt32(sqlQuery[0].ID_USUARIO_CANDIDATO)
+                                               : 0)
+                                               select cg).ToList();
+
+                    return sqlQuery3.Count > 0 ? sqlQuery3[0].NOMBRES + "  " + sqlQuery3[0].APELLIDOS : "";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public string ConsultarNumeroVotosGanadorParcial(int iIdSesion)
+        {
+            try
+            {
+                var sqlQuery = contextoVotacion.SESION_USUARIO
+                           .Where(a => a.ID_SESION == iIdSesion)
+                           .GroupBy(a => a.ID_USUARIO_CANDIDATO)
+                           .Select(g => new { ID_USUARIO_CANDIDATO = g.Key, NumeroVotos = g.Count() })
+                           .OrderByDescending(x => x.NumeroVotos).ToList();
+
+                var query = sqlQuery.Count <= 0 ? 0 : sqlQuery.Max(c => c.NumeroVotos);
+
+                return query.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public SESION_VOTACION ConsultarVotacionesPorId(int pKey)
         {
             try
@@ -279,9 +362,15 @@ namespace Votacion_BO
         {
             try
             {
-                contextoVotacion.AREA_SESION.DeleteOnSubmit(pAreaSes);
-                contextoVotacion.SubmitChanges();
-                return true;
+                AREA_SESION deleteAS = contextoVotacion.AREA_SESION.SingleOrDefault(c => c.ID_AREA == pAreaSes.ID_AREA && c.ID_SESION == pAreaSes.ID_SESION);
+                if (deleteAS != null)
+                {
+                    contextoVotacion.AREA_SESION.DeleteOnSubmit(deleteAS);
+                    contextoVotacion.SubmitChanges();
+                    return true;
+                }
+                else
+                    return false;
             }
             catch (Exception ex)
             {

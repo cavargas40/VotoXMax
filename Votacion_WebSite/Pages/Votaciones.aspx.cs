@@ -49,6 +49,8 @@ namespace Votacion_WebSite.Pages
                 dtSesVot.Columns.Add("FECHA_FIN");
                 dtSesVot.Columns.Add("FECHA_INI_INSCRIPCION");
                 dtSesVot.Columns.Add("FECHA_FIN_INSCRIPCION");
+                dtSesVot.Columns.Add("USUARIO_CANDIDATO");
+                dtSesVot.Columns.Add("NUMERO_VOTOS");
                 List<SESION_VOTACION> lstsv = new VotacionBO().ConsultarVotaciones(Convert.ToInt32(((DataSet)Session["dsUser"]).Tables[0].Rows[0]["ID_EMPRESA"]));
                 foreach (SESION_VOTACION item in lstsv)
                 {
@@ -59,6 +61,8 @@ namespace Votacion_WebSite.Pages
                     r["FECHA_FIN"] = item.FECHA_FIN.Value.ToString("dd/MM/yyyy");
                     r["FECHA_INI_INSCRIPCION"] = item.FECHA_INI_INSCRIPCION.Value.ToString("dd/MM/yyyy");
                     r["FECHA_FIN_INSCRIPCION"] = item.FECHA_FIN_INSCRIPCION.Value.ToString("dd/MM/yyyy");
+                    r["USUARIO_CANDIDATO"] = new VotacionBO().ConsultarGanadorParcial(item.ID_SESION);
+                    r["NUMERO_VOTOS"] = new VotacionBO().ConsultarNumeroVotosGanadorParcial(item.ID_SESION);
                     dtSesVot.Rows.Add(r);
                 }
                 gdvVotaciones.DataSource = dtSesVot;
@@ -123,9 +127,9 @@ namespace Votacion_WebSite.Pages
                 {
                     foreach (ListItem i in cblstAreas.Items)
                     {
+                        new VotacionBO().EliminarAreaVotaciones(new AREA_SESION() { ID_AREA = int.Parse(i.Value), ID_SESION = Convert.ToInt32(gdvVotaciones.SelectedValue) });
                         if (i.Selected)
                         {
-                            new VotacionBO().EliminarAreaVotaciones(new AREA_SESION() { ID_AREA = int.Parse(i.Value), ID_SESION = Convert.ToInt32(gdvVotaciones.SelectedValue) });
                             new VotacionBO().InsertarAreaSesion(new AREA_SESION() { ID_AREA = int.Parse(i.Value), ID_SESION = Convert.ToInt32(gdvVotaciones.SelectedValue) });
                         }
                     }
@@ -179,7 +183,7 @@ namespace Votacion_WebSite.Pages
             btnGuardar.Visible = false;
             btnGuardarSalir.Visible = false;
             panCampos.GroupingText = "Editando Votación...";
-            if (sv.FECHA_INICIO.Value > DateTime.Now && DateTime.Now < sv.FECHA_FIN)
+            if (DateTime.Now > sv.FECHA_INICIO.Value && DateTime.Now < sv.FECHA_FIN)
             {
                 txtCampania.Enabled = false;
                 txtFechaFin.Enabled = false;
@@ -192,7 +196,7 @@ namespace Votacion_WebSite.Pages
                 panCampos.GroupingText = "No es posible editarlo ya que los usuarios estan realizando votos...";
                 panCampos.BorderColor = Color.Red;
             }
-            else if (sv.FECHA_INI_INSCRIPCION.Value > DateTime.Now && DateTime.Now < sv.FECHA_FIN_INSCRIPCION)
+            else if (DateTime.Now > sv.FECHA_INI_INSCRIPCION.Value && DateTime.Now < sv.FECHA_FIN_INSCRIPCION)
             {
                 txtCampania.Enabled = false;
                 txtFechaFin.Enabled = false;
@@ -213,7 +217,7 @@ namespace Votacion_WebSite.Pages
             {
                 bool bien = false;
 
-                if (DateTime.Parse(txtFechaInsIni.Text) > DateTime.Now)
+                if (DateTime.Parse(txtFechaInsIni.Text).Date >= DateTime.Now.Date)
                 {
                     if (DateTime.Parse(txtFechaInsIni.Text) <= DateTime.Parse(txtFechaInsFin.Text))
                     {
@@ -253,7 +257,7 @@ namespace Votacion_WebSite.Pages
                 }
                 else
                 {
-                    lblErrorFechaIns.Text = "La fecha Inicial de Inscripción debe ser mayor a la Fecha actual";
+                    lblErrorFechaIns.Text = "La fecha Inicial de Inscripción no debe ser menor al  dia de hoy";
                 }
 
                 return bien;

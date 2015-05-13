@@ -26,8 +26,8 @@ namespace Votacion_DAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DANIEL-PC\\SQLEXPRESS;Initial Catalog=VotacionesPG;Persist Security In" +
-            "fo=True;User ID=votomax;Password=poligran")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=scitechdev.homedns.org;Initial Catalog=VotacionesPG;Persist Security " +
+            "Info=True;User ID=votomax;Password=poligran")]
         public string VotacionesPGConnectionString {
             get {
                 return ((string)(this["VotacionesPGConnectionString"]));
