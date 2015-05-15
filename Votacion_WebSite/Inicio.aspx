@@ -58,7 +58,7 @@
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-6">
-                    <form action="" method="post" name="Login_Form" class="form-signin" runat="server">
+                    <div action="" method="post" name="Login_Form" class="form-signin" runat="server">
                         <h3 class="form-signin-heading">Bienvenido!</h3>
                         <hr class="colorgraph">
                         <br>
@@ -74,8 +74,8 @@
                         <%--<input type="password" class="form-control" name="Password" placeholder="Password" required="" />--%>
 
                         <%--<button  name="Submit" value="Login" type="Submit">Iniciar Sesion</button>--%>
-                        <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Inicio de Sesión" ValidationGroup="Login1" OnClick="LoginButton_Click1" />
-                    </form>
+                        <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Inicio de Sesión"  ValidationGroup="Login1" OnClick="LoginButton_Click1" />
+                    </div>
                 </div>
                 <div class="col-md-3">
                 </div>
