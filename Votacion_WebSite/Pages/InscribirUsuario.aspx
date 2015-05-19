@@ -1,48 +1,53 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/MPVotacion.Master" AutoEventWireup="true" CodeBehind="InscribirUsuario.aspx.cs" Inherits="Votacion_WebSite.Pages.InscribirUsuario" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div align="center">
-        <table style="text-align:left;">
-            <tr>
-                <td>
-                    <asp:Label runat="server" ID="LblUsuario" Text="Seleccionar Usuario:"></asp:Label>
-                </td>
-                <td>
-                    <asp:DropDownList runat="server" ID="ddlUsuario" Width="250px" 
-                        AutoPostBack="True" onselectedindexchanged="ddlUsuario_SelectedIndexChanged"/>
-                </td>
-                <td><asp:CompareValidator ID="cvddlUsuario" runat="server" ControlToValidate="ddlUsuario" ErrorMessage="Debe seleccionar un Usuario" Operator="NotEqual" ValidationGroup="A" ValueToCompare="--SELECCIONE--" SetFocusOnError="True"/></td>
-            </tr>
-            <tr>
-                <td colspan="3" align="center"><asp:Image ID="imgCandidato" runat="server" Height="140px" Width="140px"/></td>
-            </tr>
-            <tr>
-                <td><asp:Label ID="lblPathImage" Text="Seleccionar Imagen:" runat="server" /></td>
-                <td style="text-align:left;"><asp:FileUpload id="fuImagen" runat="server"/>
-                    <asp:Button ID="btnCargar" Text="Cargar" CssClass="btns" runat="server" onclick="btnCargar_Click" /></td>
-                    <td><asp:Label ID="lblMsgImgReq" runat="server" /></td>
-            </tr>
-            <tr>
-                <td><asp:Label ID="lblNumCand" Text="Número Candidato:" runat="server" /></td>
-                <td>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="InscribirUsuario.aspx.cs" Inherits="Votacion_WebSite.Pages.InscribirUsuario" %>
+
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<form runat="server">
+    <asp:toolkitscriptmanager id="scriptManager" runat="server" enablescriptglobalization="true"
+        enablescriptlocalization="true" enablepartialrendering="true" scriptmode="Release">
+            </asp:toolkitscriptmanager>
+    <div class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-6" for="ddlUsuario">Seleccionar Usuario</label>
+            <div class="col-sm-6">
+                <%--<input type="text" class="form-control" id="NameCompany" placeholder="Ingrese Nombre"  maxlength="50" required title="El nombre de la empresa es requerido.">--%>
+                <%--<asp:textbox id="LastName" class="form-control" placeholder="Ingrese Nombre" runat="server" maxlength="50" runat="server" required title="los apellidos de la persona son requeridos." />--%>
+                <asp:dropdownlist runat="server" id="ddlUsuario" width="250px"
+                    autopostback="True" onselectedindexchanged="ddlUsuario_SelectedIndexChanged" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="text-center">
+                <asp:image id="imgCandidato" runat="server" height="140px" width="140px" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-6" for="fuImagen">Seleccionar Imagen</label>
+            <div class="col-sm-6">
+                <asp:fileupload id="fuImagen" runat="server" />
+                <asp:button id="btnCargar" text="Cargar" runat="server" onclick="btnCargar_Click" />
+                <asp:label id="lblMsgImgReq" runat="server" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-6" for="txtNumCand">Número de Candidato</label>
+            <div class="col-sm-6">
+                <asp:updatepanel id="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <asp:TextBox ID="txtNumCand" runat="server" CssClass="txts" Width="160px" />
+                            <asp:TextBox ID="txtNumCand" runat="server" class="form-control"  Width="160px" required placerholder="Ingrese numero de candidato" title="Número Candidato Requerido" />
                             <asp:LinkButton Text="Aleatorio" runat="server" ID="linkBtnRandomNumber" onclick="linkBtnRandomNumber_Click" />
                         </ContentTemplate>
-                    </asp:UpdatePanel>
-                </td>
-                <td><asp:RequiredFieldValidator ID="rfvtxtNumCand" runat="server" ValidationGroup="A" ControlToValidate="txtNumCand" ErrorMessage="Número Candidato Requerido" SetFocusOnError="True"/></td>
-            </tr>
-            <tr>
-                <td><asp:Label ID="lblSesion" Text="Evento a donde se quiere Postular:" runat="server" /></td>
-                <td><asp:DropDownList ID="ddlSesion" runat="server" Width="320px" CssClass="txts" /></td>
-                <td><asp:CompareValidator ID="cvddlSesion" runat="server" ControlToValidate="ddlSesion" ErrorMessage="Evento de votación Requerido" Operator="NotEqual" ValidationGroup="A" ValueToCompare="--SELECCIONE--" SetFocusOnError="True"/></td>
-            </tr>
-            <tr>
-                <td colspan="3" align="center"><asp:Button ID="btnPostular" Text="Postular" ValidationGroup="A" CssClass="btns" runat="server" onclick="btnPostular_Click" /></td>
-            </tr>
-        </table>
+                    </asp:updatepanel>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-6" for="ddlSesion">Evento a Postularse</label>
+            <div class="col-sm-6">
+                <asp:dropdownlist id="ddlSesion" runat="server" width="320px" cssclass="txts" />
+            </div>           
+        </div>
+        <div class="form-group text-center">
+            <asp:button id="btnPostular" text="Postular" validationgroup="A" cssclass="btns" runat="server" onclick="btnPostular_Click" />
+        </div>
     </div>
-</asp:Content>
+</form>

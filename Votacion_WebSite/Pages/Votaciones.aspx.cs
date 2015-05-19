@@ -83,10 +83,10 @@ namespace Votacion_WebSite.Pages
                     ID_EMPRESA = Convert.ToInt32(((DataSet)Session["dsUser"]).Tables[0].Rows[0]["ID_EMPRESA"]),
                     NOMBRE_SESION = txtCampania.Text,
                     ESTADO = true,
-                    FECHA_INICIO = Convert.ToDateTime(txtFechaIni.Text),
-                    FECHA_FIN = Convert.ToDateTime(txtFechaFin.Text),
-                    FECHA_INI_INSCRIPCION = Convert.ToDateTime(txtFechaInsIni.Text),
-                    FECHA_FIN_INSCRIPCION = Convert.ToDateTime(txtFechaInsFin.Text)
+                    FECHA_INICIO = Convert.ToDateTime(Request["txtFechaIni"].ToString()),
+                    FECHA_FIN = Convert.ToDateTime(Request["txtFechaFin"].ToString()),
+                    FECHA_INI_INSCRIPCION = Convert.ToDateTime(Request["txtFechaInsIni"].ToString()),
+                    FECHA_FIN_INSCRIPCION = Convert.ToDateTime(Request["txtFechaInsFin"].ToString())
                 });
                 {
                     foreach (ListItem i in cblstAreas.Items)
@@ -156,7 +156,7 @@ namespace Votacion_WebSite.Pages
             btnGuardarSalir.Visible = true;
             gdvVotaciones.SelectedIndex = -1;
             cblstAreas.ClearSelection();
-            panCampos.GroupingText = "Agregando Votación...";
+            //panCampos.GroupingText = "Agregando Votación...";
         }
 
         protected void gdvVotaciones_SelectedIndexChanged(object sender, EventArgs e)
@@ -217,13 +217,13 @@ namespace Votacion_WebSite.Pages
             {
                 bool bien = false;
 
-                if (DateTime.Parse(txtFechaInsIni.Text).Date >= DateTime.Now.Date)
+                if (DateTime.Parse(Request["txtFechaInsIni"].ToString()).Date >= DateTime.Now.Date)
                 {
-                    if (DateTime.Parse(txtFechaInsIni.Text) <= DateTime.Parse(txtFechaInsFin.Text))
+                    if (DateTime.Parse(Request["txtFechaInsIni"].ToString()) <= DateTime.Parse(Request["txtFechaInsFin"].ToString()))
                     {
-                        if (DateTime.Parse(txtFechaIni.Text) <= DateTime.Parse(txtFechaFin.Text))
+                        if (DateTime.Parse(Request["txtFechaIni"].ToString()) <= DateTime.Parse(Request["txtFechaFin"].ToString()))
                         {
-                            if (DateTime.Parse(txtFechaInsFin.Text) < DateTime.Parse(txtFechaIni.Text))
+                            if (DateTime.Parse(Request["txtFechaInsFin"].ToString()) < DateTime.Parse(Request["txtFechaIni"].ToString()))
                             {
                                 int cnt = 0;
                                 foreach (ListItem item in cblstAreas.Items)

@@ -1,20 +1,21 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/MPVotacion.Master" AutoEventWireup="true"
-    CodeBehind="Votar.aspx.cs" Inherits="Votacion_WebSite.Pages.Votar" %>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="Votar.aspx.cs" Inherits="Votacion_WebSite.Pages.Votar" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<form runat="server">
+    <asp:toolkitscriptmanager id="scriptManager" runat="server" enablescriptglobalization="true"
+        enablescriptlocalization="true" enablepartialrendering="true" scriptmode="Release">
+            </asp:toolkitscriptmanager>
+    <asp:updatepanel id="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Label ID="lblError" runat="server" ForeColor="Red" />
-            <br />
-            <br />
-            <h3>
-                Bienvenido a la Urna Virtual</h3>
-            <asp:Label ID="lblMensaje" runat="server" Text="Selecciona un evento de votación, para cargar la lista de candidatos asociados y votar" /><br />
-            <asp:DropDownList ID="ddlsessionaVotar" CssClass="txts" runat="server" AutoPostBack="true"
-                OnSelectedIndexChanged="ddlsessionaVotar_SelectedIndexChanged" />
-            <div align="center">
+            <div class="text-center">
+                <h2>Bienvenido a la Urna Virtual</h2>
+                <label class="control-label">Seleccione un evento de votación, para cargar la lista de candidatos asociados y votar</label>
+            </div>            
+            <div class="text-center">
+                <asp:DropDownList ID="ddlsessionaVotar" CssClass="txts" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlsessionaVotar_SelectedIndexChanged" />
+            </div>
+            <div class="text-center">
                 <table>
                     <tr>
                         <td colspan="2">
@@ -144,5 +145,5 @@
                 </table>
             </div>
         </ContentTemplate>
-    </asp:UpdatePanel>
-</asp:Content>
+    </asp:updatepanel>
+</form>

@@ -30,7 +30,7 @@ namespace Votacion_WebSite.Pages
                 ddlSesion.DataValueField = "ID_SESION";
                 ddlSesion.DataTextField = "NOMBRE_SESION";
                 ddlSesion.DataBind();
-                ddlSesion.Items.Insert(0, new ListItem("--SELECCIONE--", "--SELECCIONE--"));
+                //ddlSesion.Items.Insert(0, new ListItem("--SELECCIONE--", "--SELECCIONE--"));
             }
             catch (Exception ex)
             {

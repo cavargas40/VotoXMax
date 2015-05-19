@@ -1,14 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/MPVotacion.Master" AutoEventWireup="true"
-    CodeBehind="AdmUser.aspx.cs" Inherits="Votacion_WebSite.Administrator.AdmUser" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="" AutoEventWireup="true" CodeBehind="AdmUser.aspx.cs" Inherits="Votacion_WebSite.Administrator.AdmUser" %>
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<form runat="server">
     <div align="center">
         <asp:Button runat="server" ID="NewUser" Text="Nuevo +" OnClick="NewUser_Click" />
-        <asp:GridView ID="GridUser" runat="server" AutoGenerateColumns="False" Width="600px"
+        <asp:GridView ID="GridUser" runat="server" AutoGenerateColumns="False" 
             OnRowCommand="GridUser_RowCommand" OnRowDeleting="GridUser_RowDeleting" OnRowEditing="GridUser_RowEditing"
-            PageSize="4" PageIndex="0" OnPageIndexChanging="GridUser_PageIndexChanging" AllowPaging="True">
+            PageSize="4" PageIndex="0" OnPageIndexChanging="GridUser_PageIndexChanging" AllowPaging="True" class="table">
             <Columns>
                 <asp:TemplateField ShowHeader="False" ConvertEmptyStringToNull="False" HeaderStyle-Width="200px"
                     HeaderStyle-HorizontalAlign="Center">
@@ -35,4 +32,4 @@
             <EditRowStyle BorderStyle="Dashed" />
         </asp:GridView>
     </div>
-</asp:Content>
+</form>

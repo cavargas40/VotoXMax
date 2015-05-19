@@ -22,33 +22,6 @@ namespace Votacion_WebSite.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvSuperAdmin;
         
         /// <summary>
-        /// btSuperAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btSuperAdmin;
-        
-        /// <summary>
-        /// btUsers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btUsers;
-        
-        /// <summary>
-        /// btAreasSuperAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btAreasSuperAdmin;
-        
-        /// <summary>
         /// dvCompanies control.
         /// </summary>
         /// <remarks>
@@ -58,42 +31,6 @@ namespace Votacion_WebSite.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvCompanies;
         
         /// <summary>
-        /// btAdminUsersCompany control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btAdminUsersCompany;
-        
-        /// <summary>
-        /// btVote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btVote;
-        
-        /// <summary>
-        /// btAreas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btAreas;
-        
-        /// <summary>
-        /// btnCand control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnCand;
-        
-        /// <summary>
         /// dvUsers control.
         /// </summary>
         /// <remarks>
@@ -101,23 +38,5 @@ namespace Votacion_WebSite.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvUsers;
-        
-        /// <summary>
-        /// imgBtnInscribir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBtnInscribir;
-        
-        /// <summary>
-        /// imgBtnVotar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBtnVotar;
     }
 }

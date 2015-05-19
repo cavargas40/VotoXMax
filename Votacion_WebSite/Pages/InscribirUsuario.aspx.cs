@@ -34,7 +34,7 @@ namespace Votacion_WebSite.Pages
             ddlUsuario.DataValueField = "ID_USUARIO";
             ddlUsuario.DataTextField = "NOMBRES";
             ddlUsuario.DataBind();
-            ddlUsuario.Items.Insert(0, new ListItem("--SELECCIONE--", "--SELECCIONE--"));
+            //ddlUsuario.Items.Insert(0, new ListItem("--SELECCIONE--", "--SELECCIONE--"));
         }
 
         protected void cargarSesiones(int usuarioId, int empresaId)
@@ -46,7 +46,7 @@ namespace Votacion_WebSite.Pages
                 ddlSesion.DataValueField = "ID_SESION";
                 ddlSesion.DataTextField = "NOMBRE_SESION";
                 ddlSesion.DataBind();
-                ddlSesion.Items.Insert(0, new ListItem("--SELECCIONE--", "--SELECCIONE--"));
+                //ddlSesion.Items.Insert(0, new ListItem("--SELECCIONE--", "--SELECCIONE--"));
             }
             catch (Exception ex)
             {

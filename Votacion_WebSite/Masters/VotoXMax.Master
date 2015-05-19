@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head runat="server">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,29 +14,30 @@
     <title>VotoXMax</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server">
 
     <!-- Font Awesome CSS -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" runat="server">
 
     <!-- Custom CSS -->
-    <link href="css/animate.css" rel="stylesheet">
+    <link href="~/css/animate.css" rel="stylesheet" type="text/css" runat="server">
 
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" runat="server">
 
     <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' runat="server">
+
+
 
 
     <!-- Template js -->
-<%--    <script src="../JS/jquery-2.1.1.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../JS/jquery.appear.js"></script>
-    <script src="../JS/contact_me.js"></script>
-    <script src="../JS/jqBootstrapValidation.js"></script>
-    <script src="../JS/modernizr.custom.js"></script>
-    <script src="../JS/script.js"></script>--%>
+    <script src='<%= ResolveUrl("~/JS/jquery-2.1.1.min.js") %>'></script>
+    <script src='<%= ResolveUrl("~/bootstrap/js/bootstrap.min.js") %>'></script>
+    <script src='<%= ResolveUrl("~/JS/jquery.appear.js") %>'></script>
+    <script src='<%= ResolveUrl("~/JS/jqBootstrapValidation.js") %>'></script>
+    <script src='<%= ResolveUrl("~/JS/modernizr.custom.js") %>'></script>
+    <script src='<%= ResolveUrl("~/JS/script.js") %>'></script>
 
     <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -49,33 +50,43 @@
 </head>
 
 <body>
-
-    <!-- Start Logo Section -->
-    <section id="logo-section" class="text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="logo text-center">
-                        <h1>VotoXMax</h1>
-                        <span>El sistema de voto electrónico, que facilita el ejercicio del voto, eliminando las barreras iniciales que puedan tener los votantes ante las nuevas tecnologías.</span>
+    <form id="form1" runat="server">
+        <!-- Start Logo Section -->
+        <section id="logo-section" class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="../Pages/Principal.aspx">
+                            <div class="logo text-center">
+                                <h1>VotoXMax</h1>
+                                <span>El sistema de voto electrónico, que facilita el ejercicio del voto, eliminando las barreras iniciales que puedan tener los votantes ante las nuevas tecnologías.</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                    </div>
+                    <div class="col-md-4">
+                        <asp:Label ID="lbUser" runat="server" Text="Label" Style="color: white"></asp:Label>
+                        &nbsp;&nbsp;&nbsp;
+            <asp:LinkButton ID="lbExit" runat="server" OnClick="lbExit_Click" Visible="false" Style="color: white"><span style="color:white">Salir</span></asp:LinkButton>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- End Logo Section -->
-
-
-
-
-    <form id="form1" runat="server">
+        </section>
+        <!-- End Logo Section -->          
+        <asp:ToolkitScriptManager ID="scriptManager" runat="server" EnableScriptGlobalization="true"
+            EnableScriptLocalization="true" EnablePartialRendering="true" ScriptMode="Release"
+            OnAsyncPostBackError="ScriptManagerAsyncPostBackError">
+        </asp:ToolkitScriptManager>
         <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-    </form>
 
-    <%--        <!-- Start Main Body Section -->
+
+        <%--        <!-- Start Main Body Section -->
         <div class="mainbody-section text-center">
             <div class="container">
                 <div class="row">                    
@@ -198,20 +209,20 @@
         </div>
         <!-- End Main Body Section -->--%>
 
-    <!-- Start Copyright Section -->
-    <div class="copyright text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div>Diseñado y Desarrollado por  <a href="#">VotoXMax</a></div>
+        <!-- Start Copyright Section -->
+        <%--<footer class="copyright text-center" style="position: absolute; bottom: 0; width: 100%; height: 40px;">--%>
+            <div class="container text-center copyright">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>Diseñado y Desarrollado por  <a href="#">VotoXMax</a></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- End Copyright Section -->
+        <%--</footer>--%>
+        <!-- End Copyright Section -->
 
 
-    <%--        <!-- Start Feature Section -->
+        <%--        <!-- Start Feature Section -->
         <div class="section-modal modal fade" id="feature-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal">
@@ -1219,6 +1230,7 @@
             </div>
         </div>
         <!-- End Testimonial Section -->--%>
+    </form>
 </body>
 
 </html>
