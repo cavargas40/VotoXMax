@@ -199,6 +199,7 @@
     <Content Include="Pages\InscribirUsuario.aspx" />
     <Content Include="Pages\Postular.aspx" />
     <Content Include="Pages\Principal.aspx" />
+    <Content Include="Pages\Reportes.aspx" />
     <Content Include="Pages\Votaciones.aspx" />
     <Content Include="Pages\Votar.aspx" />
     <Content Include="Reports\Historigrama.aspx" />
@@ -302,6 +303,13 @@
     </Compile>
     <Compile Include="Pages\Principal.aspx.designer.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Votaciones.aspx.cs">
       <DependentUpon>Votaciones.aspx</DependentUpon>

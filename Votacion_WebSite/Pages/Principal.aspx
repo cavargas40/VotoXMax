@@ -8,6 +8,18 @@
             font-size: 25px;
         }
     </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$(".menu-item").on("click", function () {
+            //    var DivIdIframe = $(this).find("a").attr("href");
+            //    var Iframe = $(DivIdIframe).find("iframe");
+            //    //Iframe.css("width", $(document).width());
+            //    //Iframe.css("height", $(window).height());
+            //})
+        });
+
+        
+    </script>    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Start Main Body Section -->
@@ -50,37 +62,59 @@
                 <div runat="server" id="dvCompanies" visible="false">
                     <span style="color: white">Admin</span>
                     <br />
-                    <div class="col-md-3">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-2">
                         <div class="menu-item light-red">
                             <a href="#admusuarios-modal" data-toggle="modal">
                                 <i class="fa fa-users"></i>
-                                <p>Administrar Usuarios</p>
+                                <p>Administrar
+                                    <br />
+                                    Usuarios</p>
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="menu-item blue">
                             <a href="#admvot-modal" data-toggle="modal">
                                 <i class="fa fa-flag"></i>
-                                <p>Administrar Votaciones</p>
+                                <p>Administrar
+                                    <br />
+                                    Votaciones</p>
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="menu-item light-orange responsive">
                             <a href="#admareas-modal" data-toggle="modal">
-                                <i class="fa fa-bar-chart"></i>
-                                <p>Administrar Areas de Trabajo</p>
+                                <i class="fa fa-university"></i>
+                                <p>Administrar
+                                    <br />
+                                    Areas de Trabajo</p>
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="menu-item green">
                             <a href="#admcandid-modal" data-toggle="modal">
                                 <i class="fa fa-check-circle-o"></i>
-                                <p>Administrar Candidatos</p>
+                                <p>Administrar
+                                    <br />
+                                    Candidatos</p>
                             </a>
                         </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="menu-item color">
+                            <a href="#adm-reportes" data-toggle="modal">
+                                <i class="fa fa-bar-chart"></i>
+                                <p>Reportes
+                                    <br />
+                                    &nbsp</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
                     </div>
                 </div>
                 <!-- End Div Administrador -->
@@ -297,9 +331,35 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
         <!-- End Votar por un Candidato-->
-        <!-- End Eecciones -->
+
+        <!-- -->
+        <div id="adm-reportes" class="section-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Reportes</h3>
+                            <p>En esta opcion podra realizar las operaciones requeridas para los reportes</p>
+                        </div>
+                    </div>
+
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe src="Reportes.aspx" class="embed-responsive-item" style="overflow-x: hidden"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- -->
+        <!-- End Secciones -->
         <!-- End Main Body Section -->
     </div>
 </asp:Content>

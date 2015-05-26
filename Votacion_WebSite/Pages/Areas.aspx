@@ -8,11 +8,11 @@
             </asp:toolkitscriptmanager>
     <asp:updatepanel id="UpdatePanel1" runat="server">        
         <ContentTemplate>
-        <div class="col-md-4">
+        <div class="col-md-12 text-center">
             Empresa: <asp:DropDownList ID="ddlCompany" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCompany_SelectedIndexChanged">
             </asp:DropDownList>
         </div>
-        <div class="col-md-8">            
+        <div class="col-md-12 text-center">            
             <asp:Label ID="lblError" ForeColor="Red" Visible="false" runat="server" />
             
                 <asp:GridView ID="gvArea" runat="server" CellPadding="3" ForeColor="Black" GridLines="Vertical"

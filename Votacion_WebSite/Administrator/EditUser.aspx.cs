@@ -247,7 +247,7 @@ namespace Votacion_WebSite.Administrator
             var user = this.UserL ?? new VoUser();
             user.Apellidos = this.LastName.Text;
             user.Contrasenia = this.Password.Text;
-            user.FechaNacimiento = Convert.ToDateTime(this.MainContent_FirdsDate.Text);
+            user.FechaNacimiento = Convert.ToDateTime(Request["MainContent_FirdsDate"].ToString());
             user.Genero = this.Genero.SelectedValue;
             user.IdArea = Convert.ToInt16(this.Area.SelectedValue);
             user.IdTipoUsuario = Convert.ToInt16(this.TipeUser.SelectedValue);
