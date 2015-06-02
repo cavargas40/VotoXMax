@@ -17,7 +17,7 @@
 
         .form-signin-heading {
             text-align: center;
-            margin-bottom: 30px;            
+            margin-bottom: 30px;
         }
 
         .form-control {
@@ -53,25 +53,27 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="divLogin">
-        
-            <div class="wrapper">
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-6">
-                    <div action="" method="post" name="Login_Form" class="form-signin" runat="server">
-                        <h3 class="form-signin-heading">Bienvenido!</h3>
-                        <hr class="colorgraph">                        
-                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>                        
-                        <asp:TextBox ID="UserName" runat="server" class="form-control" placeholder="Usuario"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="El nombre de usuario es obligatorio." ToolTip="El nombre de usuario es obligatorio." ValidationGroup="Login1">*</asp:RequiredFieldValidator>                        
-                        <asp:TextBox ID="Password" runat="server" class="form-control" TextMode="Password" placeholder="Contraseña"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                        <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Inicio de Sesión"  ValidationGroup="Login1" OnClick="LoginButton_Click1" />
+        <div class="wrapper">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <div action="" method="post" name="Login_Form" class="form-signin" runat="server">
+                    <h3 class="form-signin-heading">Bienvenido!</h3>
+                    <hr class="colorgraph">
+                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                    <asp:TextBox ID="UserName" runat="server" class="form-control" placeholder="Usuario"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="El nombre de usuario es obligatorio." ToolTip="El nombre de usuario es obligatorio." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                    <asp:TextBox ID="Password" runat="server" class="form-control" TextMode="Password" placeholder="Contraseña"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                    <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Inicio de Sesión" ValidationGroup="Login1" OnClick="LoginButton_Click1" />
+                    <div class="text-center" style="margin-top:10px">
+                        <a href="RegistrarEmpresas.aspx">Registrarme Como Empresa</a>
                     </div>
                 </div>
-                <div class="col-md-3">
-                </div>
-            </div> 
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
     </div>
 </asp:Content>
 
