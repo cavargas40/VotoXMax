@@ -221,6 +221,35 @@ namespace Votacion_BO
             }
         }
 
+
+        public List<Reporte_Campana> ConsultarNumeroVotosPorcandidatoPorCampana(int iIdCampana)
+        {
+            try
+            {
+                var query = contextoVotacion.ExecuteQuery<Reporte_Campana>
+                    (@" SELECT DISTINCT  sud.[ID_USUARIO_CANDIDATO]
+			                  ,( SELECT 
+			                      COUNT(ssu.ID_USUARIO_CANDIDATO)
+					               FROM [VotacionesPG].[dbo].[SESION_USUARIO] ssu 
+					              WHERE  ssu.[ID_SESION] = " + "'" + iIdCampana + "'" + @"
+					                AND ssu.ID_USUARIO_CANDIDATO = sud.ID_USUARIO_CANDIDATO) 
+					                 AS 'Numero_Votos' 
+				              ,( SELECT [NOMBRES] + ' '+ [APELLIDOS] 
+					               FROM [VotacionesPG].[dbo].[USUARIO]
+					              WHERE ID_USUARIO =  sud.[ID_USUARIO_CANDIDATO]) 
+					                 AS 'Nombre_Candidato'	 
+                                   FROM [VotacionesPG].[dbo].[SESION_USUARIO] sud
+                                  WHERE sud.[ID_SESION] = " + "'" + iIdCampana + "'").ToList();
+
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public string ConsultarGanadorParcial(int iIdSesion)
         {
             try
@@ -400,4 +429,12 @@ namespace Votacion_BO
         }
 
     }
+
+    public class Reporte_Campana
+    {
+        public int ID_USUARIO_CANDIDATO { get; set; }
+        public int Numero_Votos { get; set; }
+        public string Nombre_Candidato { get; set; }
+    }
+
 }
