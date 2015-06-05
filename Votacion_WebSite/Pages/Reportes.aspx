@@ -9,6 +9,7 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script type="text/javascript">
 
         //// Load the Visualization API and the piechart package.
@@ -108,8 +109,8 @@
 
 
                             var data = new google.visualization.DataTable();
-                            data.addColumn('string', 'Nombre_Candidato');
-                            data.addColumn('number', 'Numero_Votos');
+                            data.addColumn('string', 'Nombre de Candidato');
+                            data.addColumn('number', 'Número de Votos');
                             var rows = new Array();
                             var Nombre_Candidato = "";
                             var Numero_Votos = 0;
@@ -150,6 +151,10 @@
             });
         });
 
+
+        $(function () {
+            $("#tabs").tabs();
+        });
     </script>
 </head>
 <body>
@@ -157,41 +162,51 @@
         <asp:ToolkitScriptManager ID="scriptManager" runat="server" EnableScriptGlobalization="true"
             EnableScriptLocalization="true" EnablePartialRendering="true" ScriptMode="Release" EnablePageMethods="true">
         </asp:ToolkitScriptManager>
-        <div class="container text-center">
-            <h2>Reporte de ganador por campaña </h2>
 
-        </div>
-        <div style="margin-left: 15%">
 
-            <br />
-            <div style="width: 50%; margin: 0 auto;">
-                Seleccione una campaña
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Reporte - Ganador por Campaña</a></li>
+                <li><a href="#tabs-2">Reporte - Ganador de Campaña por Area</a></li>
+            </ul>
+            <div id="tabs-1">
+                <div class="container text-center">
+                    <h2>Reporte - Ganador por Campaña </h2>
+
+                </div>
+                <div style="margin-left: 15%">
+
+                    <br />
+                    <div style="width: 50%; margin: 0 auto;">
+                        Seleccione una campaña
                 <asp:DropDownList ID="ddlCampañas" runat="server" AppendDataBoundItems="true">
                     <asp:ListItem Value=""></asp:ListItem>
                 </asp:DropDownList>
+                    </div>
+                    <div style="width: 70%; margin: 0 auto;" id="chart_div"></div>
+                </div>
             </div>
-            <div style="width: 70%; margin: 0 auto;" id="chart_div"></div>
-        </div>
+            <div id="tabs-2">
+                <div class="container text-center">
+                    <h2>Reporte - Ganador de Campaña por Area</h2>
 
-        <div class="container text-center">
-            <h2>Reporte - Ganador de Campaña por Area</h2>
-
-        </div>
-        <div style="margin-left: 15%">
-            <div style="width: 50%; margin: 0 auto;">
-                Seleccione una campaña&nbsp;
+                </div>
+                <div style="margin-left: 15%">
+                    <div style="width: 50%; margin: 0 auto;">
+                        Seleccione una campaña&nbsp;
                         <asp:DropDownList ID="ddlCapanna2" runat="server" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCapanna2_SelectedIndexChanged">
                             <asp:ListItem Value=""></asp:ListItem>
                         </asp:DropDownList>
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seleccione una Area&nbsp;
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seleccione una Area&nbsp;
                         <asp:DropDownList ID="ddlArea" runat="server" AppendDataBoundItems="true">
                             <asp:ListItem Value=""></asp:ListItem>
                         </asp:DropDownList>
+                    </div>
+                    <div style="width: 70%; margin: 0 auto;" id="chart_div_2"></div>
+                </div>
             </div>
-            <div style="width: 70%; margin: 0 auto;" id="chart_div_2"></div>
         </div>
-
     </form>
 </body>
 </html>

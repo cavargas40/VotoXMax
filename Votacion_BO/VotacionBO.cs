@@ -255,25 +255,29 @@ namespace Votacion_BO
             try
             {
                 var query = contextoVotacion.ExecuteQuery<Reporte_Campana_Area>
-                    (@"   SELECT DISTINCT  sud.[ID_USUARIO_CANDIDATO]
-                               ,( SELECT 
-	                               COUNT (ssu.ID_USUARIO_CANDIDATO)
-			                        FROM [VotacionesPG].[dbo].[SESION_USUARIO] ssu 
-		                            WHERE  ssu.[ID_SESION] = " + "'" + iIdCampana + "'" + @"
-                                     AND ssu.ID_USUARIO_CANDIDATO = sud.ID_USUARIO_CANDIDATO) 
-		                              AS 'Numero_Votos' 
-                               ,( SELECT [NOMBRES] + ' '+ [APELLIDOS] 
-                                    FROM [VotacionesPG].[dbo].[USUARIO] us
-                                   WHERE ID_USUARIO =  sud.[ID_USUARIO_CANDIDATO]) 
-                                      AS 'Nombre_Candidato'	 
-                               , ar.[NOMBRE_AREA] 
-                                    FROM [VotacionesPG].[dbo].[SESION_USUARIO] sud
-                                    JOIN dbo.USUARIO us
-                                      ON sud.ID_USUARIO = us.ID_USUARIO
-                                    JOIN dbo.AREA ar
-                                      ON us.ID_AREA = ar.ID_AREA
-                                   WHERE sud.[ID_SESION] =" + "'" + iIdCampana + "'" + @"
-                                     AND us.ID_AREA = " + "'" + idArea + "'").ToList();
+                    (@"           SELECT DISTINCT su.[ID_USUARIO_CANDIDATO]           
+		                                ,(SELECT   
+		                                  COUNT  (su2.ID_USUARIO_CANDIDATO)
+				                           FROM  [dbo].[SESION_USUARIO] su2
+				                           JOIN  [dbo]. [USUARIO]  us2
+					                         ON  su2.ID_USUARIO = us2.ID_USUARIO
+				                           JOIN  [dbo].[AREA] ar2
+				  	                         ON  us2.ID_AREA = ar2.ID_AREA
+				                          WHERE  [ID_SESION] = " + "'" + iIdCampana + "'" + @"
+				                            AND  su2.ID_USUARIO_CANDIDATO = su.ID_USUARIO_CANDIDATO
+					                        AND  us2.ID_AREA = " + "'" + idArea + "'" + @")  
+					                         AS  'Numero_Votos' 						   
+			                          ,( SELECT [NOMBRES] + ' '+ [APELLIDOS] 
+                                           FROM [VotacionesPG].[dbo].[USUARIO] us
+                                          WHERE ID_USUARIO =  su.[ID_USUARIO_CANDIDATO]) 
+                                             AS 'Nombre_Candidato'	
+                                           FROM  [dbo].[SESION_USUARIO] su
+                                           JOIN  [dbo]. [USUARIO]  us
+                                             ON  su.ID_USUARIO = us.ID_USUARIO
+                                           JOIN  [dbo].[AREA] ar
+                                             ON  us.ID_AREA = ar.ID_AREA
+                                          WHERE  [ID_SESION] = " + "'" + iIdCampana + "'" + @"
+                                            AND  us.ID_AREA = " + "'" + idArea + "'" + @"").ToList();
 
 
                 return query;
