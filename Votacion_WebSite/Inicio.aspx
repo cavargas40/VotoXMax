@@ -50,6 +50,7 @@
             background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
         }
     </style>
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="divLogin">
@@ -66,7 +67,7 @@
                     <asp:TextBox ID="Password" runat="server" class="form-control" TextMode="Password" placeholder="Contraseña"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                     <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Inicio de Sesión" ValidationGroup="Login1" OnClick="LoginButton_Click1" />
-                    <div class="text-center" style="margin-top:10px">
+                    <div class="text-center" style="margin-top: 10px">
                         <a href="RegistrarEmpresas.aspx">Registrarme Como Empresa</a>
                     </div>
                 </div>

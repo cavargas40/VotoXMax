@@ -79,8 +79,8 @@
                             // Set chart options
                             var options = {
                                 'title': 'Reporte de ganador por campaña',
-                                'width': 800,
-                                'height': 600
+                                'width': 700,
+                                'height': 400
                             };
 
                             // Instantiate and draw our chart, passing in some options.
