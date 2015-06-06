@@ -17,11 +17,58 @@
                 //},
                 dateFormat: 'dd/mm/yy'
             });
+
+            $("#btnGuardar, #btnGuardarSalir").on("click", function () {
+                var FechaInsIni = $("#txtFechaInsIni").val();
+                var FechaInsFin = $("#txtFechaInsFin").val();
+                var FechaIni = $("#txtFechaIni").val();
+                var FechaFin = $("#txtFechaFin").val();
+
+                var lblErrorFechaIns = $("#lblErrorFechaIns");
+                var lblErrorFecha = $("#lblErrorFecha");
+                var lblErrorChekList = $("#lblErrorChekList");
+
+                lblErrorFechaIns.text("").hide();
+                lblErrorFecha.text("").hide();
+                lblErrorChekList.text("").hide();
+
+                if ((new Date(FechaInsIni).getTime() >= new Date().getTime())){
+                    if ((new Date(FechaInsIni).getTime() <= new Date(FechaInsFin).getTime())) {
+                        if ((new Date(FechaIni).getTime() <= new Date(FechaFin).getTime())) {
+                            if ((new Date(FechaInsFin).getTime() < new Date(FechaIni).getTime())) {
+                                if ($("input[id*='cblstAreas']:checked").length > 0) {
+                                    
+                                }
+                                else {
+                                    lblErrorChekList.text("Debe seleccionar al menos una o más areas").show();
+                                    return false;
+                                }
+                            }
+                            else {
+                                lblErrorFechaIns.text("La fecha Final de Inscripción debe ser menor a la Fecha inicial de Votación").show();
+                                return false;
+                            }
+                        }
+                        else {
+                            lblErrorFecha.text("La fecha Inicial de Votación debe ser menor a la Fecha final de Votación").show();
+                            return false;
+                        }
+                    }
+                    else {
+                        lblErrorFechaIns.text("La fecha Inicial de Inscripción debe ser menor a la Fecha final de Inscripción").show();
+                        return false;
+                    }
+                }
+                else{
+                    lblErrorFechaIns.text("La fecha Inicial de Inscripción no debe ser menor al  dia de hoy").show();
+                    return false;
+                }
+            });
         });
     </script>
     <style>
         input[readonly] {
-           ;
+           /**/
         }
     </style>
 </head>

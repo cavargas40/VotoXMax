@@ -217,48 +217,48 @@ namespace Votacion_WebSite.Pages
             {
                 bool bien = false;
 
-                if (DateTime.Parse(Request["txtFechaInsIni"].ToString()).Date >= DateTime.Now.Date)
-                {
-                    if (DateTime.Parse(Request["txtFechaInsIni"].ToString()) <= DateTime.Parse(Request["txtFechaInsFin"].ToString()))
-                    {
-                        if (DateTime.Parse(Request["txtFechaIni"].ToString()) <= DateTime.Parse(Request["txtFechaFin"].ToString()))
-                        {
-                            if (DateTime.Parse(Request["txtFechaInsFin"].ToString()) < DateTime.Parse(Request["txtFechaIni"].ToString()))
-                            {
-                                int cnt = 0;
-                                foreach (ListItem item in cblstAreas.Items)
-                                {
-                                    if (item.Selected)
-                                        cnt++;
-                                }
-                                if (cnt > 0)
-                                {
+                //if (DateTime.Parse(Request["txtFechaInsIni"].ToString()).Date >= DateTime.Now.Date)
+                //{
+                //    if (DateTime.Parse(Request["txtFechaInsIni"].ToString()) <= DateTime.Parse(Request["txtFechaInsFin"].ToString()))
+                //    {
+                //        if (DateTime.Parse(Request["txtFechaIni"].ToString()) <= DateTime.Parse(Request["txtFechaFin"].ToString()))
+                //        {
+                //            if (DateTime.Parse(Request["txtFechaInsFin"].ToString()) < DateTime.Parse(Request["txtFechaIni"].ToString()))
+                //            {
+                                //int cnt = 0;
+                                //foreach (ListItem item in cblstAreas.Items)
+                                //{
+                                //    if (item.Selected)
+                                //        cnt++;
+                                //}
+                                //if (cnt > 0)
+                                //{
                                     bien = true;
-                                }
-                                else
-                                {
-                                    lblErrorChekList.Text = "Debe seleccionar al menos una o más areas";
-                                }
-                            }
-                            else
-                            {
-                                lblErrorFechaIns.Text = "La fecha Final de Inscripción debe ser menor a la Fecha inicial de Votación";
-                            }
-                        }
-                        else
-                        {
-                            lblErrorFecha.Text = "La fecha Inicial de Votación debe ser menor a la Fecha final de Votación";
-                        }
-                    }
-                    else
-                    {
-                        lblErrorFechaIns.Text = "La fecha Inicial de Inscripción debe ser menor a la Fecha final de Inscripción";
-                    }
-                }
-                else
-                {
-                    lblErrorFechaIns.Text = "La fecha Inicial de Inscripción no debe ser menor al  dia de hoy";
-                }
+                                //}
+                                //else
+                                //{
+                                //    lblErrorChekList.Text = "Debe seleccionar al menos una o más areas";
+                                //}
+                //            }
+                //            else
+                //            {
+                //                lblErrorFechaIns.Text = "La fecha Final de Inscripción debe ser menor a la Fecha inicial de Votación";
+                //            }
+                //        }
+                //        else
+                //        {
+                //            lblErrorFecha.Text = "La fecha Inicial de Votación debe ser menor a la Fecha final de Votación";
+                //        }
+                //    }
+                //    else
+                //    {
+                //        lblErrorFechaIns.Text = "La fecha Inicial de Inscripción debe ser menor a la Fecha final de Inscripción";
+                //    }
+                //}
+                //else
+                //{
+                //    lblErrorFechaIns.Text = "La fecha Inicial de Inscripción no debe ser menor al  dia de hoy";
+                //}
 
                 return bien;
             }
