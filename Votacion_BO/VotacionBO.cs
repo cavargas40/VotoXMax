@@ -221,6 +221,75 @@ namespace Votacion_BO
             }
         }
 
+
+        public List<Reporte_Campana> ConsultarNumeroVotosPorcandidatoPorCampana(int iIdCampana)
+        {
+            try
+            {
+                var query = contextoVotacion.ExecuteQuery<Reporte_Campana>
+                    (@" SELECT DISTINCT  sud.[ID_USUARIO_CANDIDATO]
+			                  ,( SELECT 
+			                      COUNT(ssu.ID_USUARIO_CANDIDATO)
+					               FROM [VotacionesPG].[dbo].[SESION_USUARIO] ssu 
+					              WHERE  ssu.[ID_SESION] = " + "'" + iIdCampana + "'" + @"
+					                AND ssu.ID_USUARIO_CANDIDATO = sud.ID_USUARIO_CANDIDATO) 
+					                 AS 'Numero_Votos' 
+				              ,( SELECT [NOMBRES] + ' '+ [APELLIDOS] 
+					               FROM [VotacionesPG].[dbo].[USUARIO]
+					              WHERE ID_USUARIO =  sud.[ID_USUARIO_CANDIDATO]) 
+					                 AS 'Nombre_Candidato'	 
+                                   FROM [VotacionesPG].[dbo].[SESION_USUARIO] sud
+                                  WHERE sud.[ID_SESION] = " + "'" + iIdCampana + "'").ToList();
+
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Reporte_Campana_Area> ConsultarNumeroVotosPorCampanaPorVotacion(int iIdCampana, int idArea)
+        {
+            try
+            {
+                var query = contextoVotacion.ExecuteQuery<Reporte_Campana_Area>
+                    (@"           SELECT DISTINCT su.[ID_USUARIO_CANDIDATO]           
+		                                ,(SELECT   
+		                                  COUNT  (su2.ID_USUARIO_CANDIDATO)
+				                           FROM  [dbo].[SESION_USUARIO] su2
+				                           JOIN  [dbo]. [USUARIO]  us2
+					                         ON  su2.ID_USUARIO = us2.ID_USUARIO
+				                           JOIN  [dbo].[AREA] ar2
+				  	                         ON  us2.ID_AREA = ar2.ID_AREA
+				                          WHERE  [ID_SESION] = " + "'" + iIdCampana + "'" + @"
+				                            AND  su2.ID_USUARIO_CANDIDATO = su.ID_USUARIO_CANDIDATO
+					                        AND  us2.ID_AREA = " + "'" + idArea + "'" + @")  
+					                         AS  'Numero_Votos' 						   
+			                          ,( SELECT [NOMBRES] + ' '+ [APELLIDOS] 
+                                           FROM [VotacionesPG].[dbo].[USUARIO] us
+                                          WHERE ID_USUARIO =  su.[ID_USUARIO_CANDIDATO]) 
+                                             AS 'Nombre_Candidato'	
+                                           FROM  [dbo].[SESION_USUARIO] su
+                                           JOIN  [dbo]. [USUARIO]  us
+                                             ON  su.ID_USUARIO = us.ID_USUARIO
+                                           JOIN  [dbo].[AREA] ar
+                                             ON  us.ID_AREA = ar.ID_AREA
+                                          WHERE  [ID_SESION] = " + "'" + iIdCampana + "'" + @"
+                                            AND  us.ID_AREA = " + "'" + idArea + "'" + @"").ToList();
+
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         public string ConsultarGanadorParcial(int iIdSesion)
         {
             try
@@ -399,5 +468,42 @@ namespace Votacion_BO
             }
         }
 
+        public List<AREA> consultarAreas(int idCompany)
+        {
+            try
+            {
+                var query = contextoVotacion.ExecuteQuery<AREA>
+                               (@"   SELECT [ID_AREA]
+                                          ,[NOMBRE_AREA]
+                                          ,[ID_EMPRESA]
+                                      FROM [dbo].[AREA]
+                                      WHERE ID_EMPRESA =" + "'" + idCompany + "'").ToList();
+
+
+                return query;
+            }
+            catch (Exception)
+            {
+                return new List<AREA>();
+            }
+            
+        }
+
     }
+
+    public class Reporte_Campana
+    {
+        public int ID_USUARIO_CANDIDATO { get; set; }
+        public int Numero_Votos { get; set; }
+        public string Nombre_Candidato { get; set; }
+    }
+
+    public class Reporte_Campana_Area
+    {
+        public int ID_USUARIO_CANDIDATO { get; set; }
+        public int Numero_Votos { get; set; }
+        public string Nombre_Candidato { get; set; }
+        public string NOMBRE_AREA { get; set; }
+    }
+
 }
