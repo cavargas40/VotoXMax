@@ -102,6 +102,7 @@ namespace Votacion_WebSite.Pages
                     }
                     else
                     {
+                        Page.ClientScript.RegisterClientScriptBlock(GetType(), "JScript1", "ShowDiv('data');", true);
                         CargarSesionVotacion();
                         gdvVotaciones.SelectedIndexChanged += new EventHandler(gdvVotaciones_SelectedIndexChanged);
                     }

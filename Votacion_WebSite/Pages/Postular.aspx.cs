@@ -70,7 +70,8 @@ namespace Votacion_WebSite.Pages
 
                     if (new VotacionBO().InscribirCandidato(cand))
                         if (new VotacionBO().RegistroCandidato(sc))
-                            Response.Redirect("~/Pages/Votar.aspx");
+                            Page.ClientScript.RegisterClientScriptBlock(GetType(), "JScript1", "ShowDiv('data');", true);
+                    Page.ClientScript.RegisterClientScriptBlock(GetType(), "JScript1", "ShowDiv('data');", true);
                 }
                 else
                 {

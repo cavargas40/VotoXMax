@@ -1,11 +1,38 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="" AutoEventWireup="true" CodeBehind="AdmUser.aspx.cs" Inherits="Votacion_WebSite.Administrator.AdmUser" %>
+
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<form runat="server">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<script type="text/javascript">
+    var message = false;
+    function ShowDiv(obj) {
+        message = true;
+    }
+
+    $(function () {
+        $("#alert").hide();
+
+
+        $(window).load(function () {
+            if (message) {
+                $("#alert").show();
+            }
+
+        });
+
+    });
+
+</script>
+<form runat="server">    
+     <div class="alert alert-success"" role="alert" id="alert">
+        <strong>Procesado!</strong> El usuario fue agregado con exito
+    </div>
     <div align="center">
-        <asp:Button runat="server" ID="NewUser" Text="Nuevo +" OnClick="NewUser_Click" />
-        <asp:GridView ID="GridUser" runat="server" AutoGenerateColumns="False" 
-            OnRowCommand="GridUser_RowCommand" OnRowDeleting="GridUser_RowDeleting" OnRowEditing="GridUser_RowEditing"
-            PageSize="4" PageIndex="0" OnPageIndexChanging="GridUser_PageIndexChanging" AllowPaging="True" class="table">
+        <asp:button runat="server" id="NewUser" text="Nuevo +" onclick="NewUser_Click" />
+        <asp:gridview id="GridUser" runat="server" autogeneratecolumns="False"
+            onrowcommand="GridUser_RowCommand" onrowdeleting="GridUser_RowDeleting" onrowediting="GridUser_RowEditing"
+            pagesize="4" pageindex="0" onpageindexchanging="GridUser_PageIndexChanging" allowpaging="True" class="table">
             <Columns>
                 <asp:TemplateField ShowHeader="False" ConvertEmptyStringToNull="False" HeaderStyle-Width="200px"
                     HeaderStyle-HorizontalAlign="Center">
@@ -30,6 +57,6 @@
                 </asp:TemplateField>
             </Columns>
             <EditRowStyle BorderStyle="Dashed" />
-        </asp:GridView>
+        </asp:gridview>
     </div>
 </form>

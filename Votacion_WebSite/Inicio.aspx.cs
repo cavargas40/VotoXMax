@@ -55,6 +55,7 @@ namespace Votacion_WebSite
                 if (userQuery == null)
                 {
                     this.FailureText.Text = "El usuario o contraseña estan errados. <br> Intentelo de nuevo.";
+                    Page.ClientScript.RegisterClientScriptBlock(GetType(), "JScript1", "ShowDiv('data');", true);
                 }
                 else
                 {

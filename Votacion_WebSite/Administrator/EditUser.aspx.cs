@@ -228,7 +228,7 @@ namespace Votacion_WebSite.Administrator
             {
                 this.UserL = user;
                 this.FailureText.Text = string.Empty;
-                this.Response.Redirect("../Administrator/AdmUser.aspx");
+                this.Response.Redirect("../Administrator/AdmUser.aspx?message=ok");
             }
             else
             {

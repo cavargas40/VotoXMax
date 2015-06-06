@@ -18,22 +18,42 @@
                 dateFormat: 'dd/mm/yy'
             });
         });
+        var message = false;
+        function ShowDiv(obj) {
+            message = true;
+        }
+
+        $(function () {
+            $("#alert").hide();
+
+
+            $(window).load(function () {
+                if (message) {
+                    $("#alert").show();
+                }
+
+            });
+
+        });
+
     </script>
     <style>
         input[readonly] {
-           ;
+            ;
         }
     </style>
 </head>
 <body>
+
     <form runat="server">
         <asp:ToolkitScriptManager ID="scriptManager" runat="server" EnableScriptGlobalization="true"
             EnableScriptLocalization="true" EnablePartialRendering="true" ScriptMode="Release">
         </asp:ToolkitScriptManager>
-        <div align="center">
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <asp:Panel ID="panCampos" runat="server">
+          <div class="alert alert-success"" role="alert" id="alert">
+          <strong>Procesado!</strong> La campaña fue agregada con exito
+        </div>
+         <div align="center">
+        <asp:Panel ID="panCampos" runat="server">
                         <h2>Agregar Votación</h2>
                         <div class="form-horizontal" role="form">
                             <div class="form-group">
@@ -106,6 +126,11 @@
                             <SortedDescendingHeaderStyle BackColor="#242121" />
                         </asp:GridView>
                     </asp:Panel>
+             </div>
+        <div align="center">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    
                 </ContentTemplate>
             </asp:UpdatePanel>
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
