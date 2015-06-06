@@ -202,7 +202,7 @@
     <Content Include="Pages\Reportes.aspx" />
     <Content Include="Pages\Votaciones.aspx" />
     <Content Include="Pages\Votar.aspx" />
-    <Content Include="RegistrarEmpresas.aspx" />
+    <Content Include="Masters\RegistrarEmpresas.aspx" />
     <Content Include="Reports\Historigrama.aspx" />
     <Content Include="Reports\Resultado.aspx" />
     <Content Include="Web.config" />
@@ -332,11 +332,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarEmpresas.aspx.cs">
+    <Compile Include="Masters\RegistrarEmpresas.aspx.cs">
       <DependentUpon>RegistrarEmpresas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegistrarEmpresas.aspx.designer.cs">
+    <Compile Include="Masters\RegistrarEmpresas.aspx.designer.cs">
       <DependentUpon>RegistrarEmpresas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\Historigrama.aspx.cs">

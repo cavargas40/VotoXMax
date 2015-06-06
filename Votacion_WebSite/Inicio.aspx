@@ -110,7 +110,7 @@
                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                     <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Inicio de Sesión" ValidationGroup="Login1" OnClick="LoginButton_Click1" />
                     <div class="text-center" style="margin-top: 10px">
-                        <a href="RegistrarEmpresas.aspx">Registrarme Como Empresa</a>
+                        <a href="Masters/RegistrarEmpresas.aspx">Registrarme Como Empresa</a>
                     </div>
                 </div>
             </div>
