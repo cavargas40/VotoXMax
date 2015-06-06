@@ -56,7 +56,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="<%= ResolveUrl("~/Pages/Principal.aspx") %>">
+                        <a href="../Pages/Principal.aspx">
                             <div class="logo text-center">
                                 <h1>VotoXMax</h1>
                                 <span>El sistema de voto electrónico, que facilita el ejercicio del voto, eliminando las barreras iniciales que puedan tener los votantes ante las nuevas tecnologías.</span>
