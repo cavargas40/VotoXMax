@@ -31,7 +31,8 @@ namespace Votacion_WebSite
             user.Genero = ddlGeneroAdm.SelectedValue;
             user.NombreUsuario = txtNickUser.Text;
             user.Contrasenia = txtPass.Text;
-            user.FechaNacimiento = DateTime.Parse(Request["txtFechaNacimientoAdmin"].ToString());
+            user.FechaNacimiento = DateTime.Parse(txtFechaNacimientoAdmin.Text);
+           
 
             VoCompany empresa = new VoCompany();
             empresa.NitEmpresa = txtNitEmpresa.Text;
