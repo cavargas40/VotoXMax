@@ -273,4 +273,23 @@
     <Parameter Name="CONTRASENIA" Parameter="cONTRASENIA" Type="System.String" DbType="NVarChar(20)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.RegistroNuevaEmpresaAdministracion" Method="RegistroNuevaEmpresaAdministracion">
+    <Parameter Name="nombreEmpresa" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="nitEmpresa" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="direccionEmpresa" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="telefonoEmpresa" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="correoEmpresa" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="nombreUserAdm" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="apellidoUserAdm" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="tipoDoc" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="numeroDocIdent" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="generoUserAdm" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="fechaNacimiento" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="numero" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idRol" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idTipoUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="userNick" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="passUser" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

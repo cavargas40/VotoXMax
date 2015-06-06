@@ -84,5 +84,10 @@ namespace Votacion_BO
                         TelefonoEmpresa = c.TELEFONO_EMPRESA
                     }).ToList();
         }
+
+        public void RegistroNuevaEmpresaAdmin(VoCompany pEmpresa, VoUser pUsuarioAdmin)
+        {
+            dataClases.RegistroNuevaEmpresaAdministracion(pEmpresa.NombreEmpresa, pEmpresa.NitEmpresa, pEmpresa.DireccionEmpresa, pEmpresa.TelefonoEmpresa, pEmpresa.CorreoEmpresa, pUsuarioAdmin.Nombres, pUsuarioAdmin.Apellidos, pUsuarioAdmin.TypeDocument, pUsuarioAdmin.Identficacion, pUsuarioAdmin.Genero, pUsuarioAdmin.FechaNacimiento, pUsuarioAdmin.Numero, pUsuarioAdmin.IdRol, pUsuarioAdmin.IdTipoUsuario, pUsuarioAdmin.NombreUsuario, pUsuarioAdmin.Contrasenia);
+        }
     }
 }

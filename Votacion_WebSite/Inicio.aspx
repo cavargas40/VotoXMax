@@ -50,31 +50,9 @@
             background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
         }
     </style>
-    <script type="text/javascript">
-        var message = false;
-        function ShowDiv(obj) {
-            message = true;
-        }
-
-        $(function () {
-            $("#alert").hide();
-
-
-            $(window).load(function () {
-                if (message) {
-                    $("#alert").show();
-                }
-
-            });
-
-        });
-
-    </script>
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="alert alert-danger" role="alert" id="alert">
-        <strong>Oh Cuidado!</strong> El usuario o contraseña estan errados. Intentelo de nuevo..
-    </div>
     <div id="divLogin">
         <div class="wrapper">
             <div class="col-md-3">
@@ -98,8 +76,6 @@
             </div>
         </div>
     </div>
-
-
 </asp:Content>
 
 
