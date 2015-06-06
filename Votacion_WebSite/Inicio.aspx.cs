@@ -19,7 +19,18 @@ namespace Votacion_WebSite
         #region Events
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+            {
 
+            }
+            else
+            {
+                if (Request.QueryString["empresa"] != null && Request.QueryString["empresa"] == "ok")
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(GetType(), "JScript1", "ShowDiv2('data');", true);
+                }
+            }
+            
         }
 
 
@@ -29,7 +40,7 @@ namespace Votacion_WebSite
             if (sigInUser(UserName.Text, Password.Text, out dsData))
             {
                 Response.Redirect("~/Pages/Principal.aspx");
-            }
+            }           
         }
 
         #endregion
@@ -55,6 +66,7 @@ namespace Votacion_WebSite
                 if (userQuery == null)
                 {
                     this.FailureText.Text = "El usuario o contraseña estan errados. <br> Intentelo de nuevo.";
+                    Page.ClientScript.RegisterClientScriptBlock(GetType(), "JScript1", "ShowDiv('data');", true);
                 }
                 else
                 {

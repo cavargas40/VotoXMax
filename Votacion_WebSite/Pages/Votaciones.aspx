@@ -17,70 +17,43 @@
                 //},
                 dateFormat: 'dd/mm/yy'
             });
-
-            $("#btnGuardar, #btnGuardarSalir").on("click", function () {
-                var FechaInsIni = $("#txtFechaInsIni").val();
-                var FechaInsFin = $("#txtFechaInsFin").val();
-                var FechaIni = $("#txtFechaIni").val();
-                var FechaFin = $("#txtFechaFin").val();
-
-                var lblErrorFechaIns = $("#lblErrorFechaIns");
-                var lblErrorFecha = $("#lblErrorFecha");
-                var lblErrorChekList = $("#lblErrorChekList");
-
-                lblErrorFechaIns.text("").hide();
-                lblErrorFecha.text("").hide();
-                lblErrorChekList.text("").hide();
-
-                if ((new Date(FechaInsIni).getTime() >= new Date().getTime())){
-                    if ((new Date(FechaInsIni).getTime() <= new Date(FechaInsFin).getTime())) {
-                        if ((new Date(FechaIni).getTime() <= new Date(FechaFin).getTime())) {
-                            if ((new Date(FechaInsFin).getTime() < new Date(FechaIni).getTime())) {
-                                if ($("input[id*='cblstAreas']:checked").length > 0) {
-                                    
-                                }
-                                else {
-                                    lblErrorChekList.text("Debe seleccionar al menos una o más areas").show();
-                                    return false;
-                                }
-                            }
-                            else {
-                                lblErrorFechaIns.text("La fecha Final de Inscripción debe ser menor a la Fecha inicial de Votación").show();
-                                return false;
-                            }
-                        }
-                        else {
-                            lblErrorFecha.text("La fecha Inicial de Votación debe ser menor a la Fecha final de Votación").show();
-                            return false;
-                        }
-                    }
-                    else {
-                        lblErrorFechaIns.text("La fecha Inicial de Inscripción debe ser menor a la Fecha final de Inscripción").show();
-                        return false;
-                    }
-                }
-                else{
-                    lblErrorFechaIns.text("La fecha Inicial de Inscripción no debe ser menor al  dia de hoy").show();
-                    return false;
-                }
-            });
         });
+        var message = false;
+        function ShowDiv(obj) {
+            message = true;
+        }
+
+        $(function () {
+            $("#alert").hide();
+
+
+            $(window).load(function () {
+                if (message) {
+                    $("#alert").show();
+                }
+
+            });
+
+        });
+
     </script>
     <style>
         input[readonly] {
-           /**/
+            ;
         }
     </style>
 </head>
 <body>
+
     <form runat="server">
         <asp:ToolkitScriptManager ID="scriptManager" runat="server" EnableScriptGlobalization="true"
             EnableScriptLocalization="true" EnablePartialRendering="true" ScriptMode="Release">
         </asp:ToolkitScriptManager>
-        <div align="center">
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <asp:Panel ID="panCampos" runat="server">
+          <div class="alert alert-success"" role="alert" id="alert">
+          <strong>Procesado!</strong> La campaña fue agregada con exito
+        </div>
+         <div align="center">
+        <asp:Panel ID="panCampos" runat="server">
                         <h2>Agregar Votación</h2>
                         <div class="form-horizontal" role="form">
                             <div class="form-group">
@@ -153,6 +126,11 @@
                             <SortedDescendingHeaderStyle BackColor="#242121" />
                         </asp:GridView>
                     </asp:Panel>
+             </div>
+        <div align="center">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    
                 </ContentTemplate>
             </asp:UpdatePanel>
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">

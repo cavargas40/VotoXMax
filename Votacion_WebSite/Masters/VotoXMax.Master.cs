@@ -36,7 +36,7 @@ namespace Votacion_WebSite.Masters
                 else
                 {
                     DataSet dsData = (DataSet)Session["dsUser"];
-                    if (dsData != null)
+                    if (dsData != null && dsData.Tables[0].Rows.Count > 0)
                     {
                         lbUser.Text = "Bienvenido:  " + dsData.Tables[0].Rows[0][3].ToString();
                     }
