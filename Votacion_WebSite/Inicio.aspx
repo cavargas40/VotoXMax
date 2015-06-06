@@ -51,19 +51,36 @@
         }
     </style>
    <script type="text/javascript">
-        var message = false;
+       var message = false;
+       var message2 = false;
         function ShowDiv(obj) {
             message = true;
+            message2 = false;
+        }
+
+        function ShowDiv2(obj) {
+            message = false;
+            message2 = true;
         }
 
         $(function () {
             $("#alert").hide();
+            $("#alert2").hide(); 
 
 
             $(window).load(function () {
                 if (message) {
                     $("#alert").show();
+                    $("#alert2").hide();
+                    return;
+                } else if (message2) {
+                    $("#alert2").show();
+                    $("#alert").hide();
+                    return;
                 }
+
+                
+                
 
             });
 
@@ -74,6 +91,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="alert alert-danger" role="alert" id="alert">
         <strong>Oh Cuidado!</strong> El usuario o contraseña estan errados. Intentelo de nuevo..
+    </div>
+     <div class="alert alert-success" role="alert" id="alert2">
+        <strong>Procesado!</strong> La empresa se registro con exito
     </div>
     <div id="divLogin">
         <div class="wrapper">
