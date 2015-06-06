@@ -41,7 +41,7 @@ namespace Votacion_WebSite
             empresa.DireccionEmpresa = txtDireccionEmpresa.Text;
             empresa.CorreoEmpresa = txtMailEmpresa.Text;
             new LogicCompany().RegistroNuevaEmpresaAdmin(empresa, user);
-            Response.Redirect("/Inicio.aspx?empresa=ok");
+            Response.Redirect("~/Inicio.aspx?empresa=ok");
         }
     }
 }
