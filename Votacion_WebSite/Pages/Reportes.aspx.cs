@@ -18,6 +18,7 @@ namespace Votacion_WebSite.Pages
             if (!IsPostBack)
             {
                 cargarCampanas();
+                LoadArea();
             }
         }
 
@@ -53,10 +54,33 @@ namespace Votacion_WebSite.Pages
                 ddlCampañas.DataTextField = "NOMBRE_SESION";
                 ddlCampañas.DataValueField = "ID_SESION";
                 ddlCampañas.DataBind();
+
+
+                ddlCapanna2.DataSource = dtSesVot;
+                ddlCapanna2.DataTextField = "NOMBRE_SESION";
+                ddlCapanna2.DataValueField = "ID_SESION";
+                ddlCapanna2.DataBind();
             }
             catch (Exception)
             {
 
+            }
+        }
+
+        private void LoadArea()
+        {
+            try
+            {
+                List<AREA> area = new VotacionBO().consultarAreas(Convert.ToInt32(Session["company"].ToString()));
+
+                ddlArea.DataSource = area;
+                ddlArea.DataTextField = "NOMBRE_AREA";
+                ddlArea.DataValueField = "ID_AREA";
+                ddlArea.DataBind();
+            }
+            catch (Exception)
+            {
+                
             }
         }
 
@@ -78,6 +102,34 @@ namespace Votacion_WebSite.Pages
 
 
             return (list);
+        }
+
+
+        [System.Web.Services.WebMethod]
+        public static List<string[]> GetDataAjaxArea(string idCampana, string idArea)
+        {
+            List<Reporte_Campana_Area> test = new VotacionBO().ConsultarNumeroVotosPorCampanaPorVotacion(Convert.ToInt32(idCampana), Convert.ToInt32(idArea));
+
+            List<string[]> list = new List<string[]>();
+            string[] arr1 = new string[] { };
+
+            foreach (var item in test)
+            {
+                arr1 = new string[] {  item.ID_USUARIO_CANDIDATO.ToString(),
+                                       item.Nombre_Candidato,
+                                       item.Numero_Votos.ToString(),
+                                       item.NOMBRE_AREA
+                                     };
+                list.Add(arr1);
+            }
+
+
+            return (list);
+        }
+
+        protected void ddlCapanna2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
